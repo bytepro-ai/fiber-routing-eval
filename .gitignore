@@ -8,3 +8,4 @@ papers/*.out
 papers/*.toc
 papers/*.fls
 papers/*.fdb_latexmk
+.env
