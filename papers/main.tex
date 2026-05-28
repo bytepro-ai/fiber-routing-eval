@@ -1,0 +1,128 @@
+% ─────────────────────────────────────────────────────────────────────────────
+% FiberRing Routing Evaluation — Paper Draft v0.1
+% Authors: Manuel Israel Cázares (Bytepro AI) · Wenlin Zhang (NUS / Omega Institute)
+% Title: subject to Wenlin's approval — see comment below
+% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[numbers,sort&compress]{natbib}
+
+% ── Title block ──────────────────────────────────────────────────────────────
+% PENDING WENLIN APPROVAL: title, affiliations
+\title{Mechanism-level routing failure in LLMs\\
+       over Lean-verified algebraic structures}
+
+\author{
+  Manuel Israel C\'azares\textsuperscript{1} \and
+  Wenlin Zhang\textsuperscript{2}
+}
+
+\date{
+  \textsuperscript{1}Bytepro AI, Mazatl\'an, M\'exico\\
+  \textsuperscript{2}National University of Singapore / Omega Institute\\[6pt]
+  \small\textit{Correspondence:} hello@bytepro.ai
+}
+
+\begin{document}
+\maketitle
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{abstract}
+We present an empirical study of structural routing failure in large language
+models (LLMs) over a formally verified algebraic corpus. The task requires
+selecting the correct proof-mechanism label---from a fixed closed set of 13
+templates---for compact mathematical objects drawn from the FiberRing
+formalization in Lean~4~\cite{omega2026automath}, where every ground-truth
+label is independently verified by the Lean kernel.
+
+Our central finding is a \textbf{mechanism-level routing ceiling}: under
+blind conditions (no structural cue), gpt-oss-120b achieves $80.3\%$
+template accuracy on 22 clean-anchor FiberRing items
+($n=66$ evaluations; temperature~$=0$, seed~$=0$, reasoning~$=\mathrm{low}$),
+while Llama~3.3~70B reaches $68.2\%$.
+Exposing the Lean-verified verdict as a cue (Condition~A2) raises accuracy
+to $90.9\%$ and $81.8\%$ respectively~---~a gap of $+10.6$ and $+13.6$
+percentage points that we term \textbf{cue-induced routing uplift}.
+
+The dominant failure mode is a CRT\,$\to$\,ring-equivalence misroute:
+gpt-oss-120b misroutes 7 of 12 CRT items ($58.3\%$) in the blind condition,
+and zero in the cue-conditioned condition. We show this error has a direct
+correlate in the Lean corpus: every CRT row is implemented as a ring
+equivalence at the outer type level, with the CRT proof mechanism encoded
+one layer deeper in the certificate family. The model identifies the broad
+algebraic type but fails to resolve the finer proof mechanism without the
+cue.
+
+Two \textbf{cue-resistant} failure modes persist in both conditions
+across both models:
+\begin{itemize}
+  \item \texttt{stable{-}value{-}map} $\to$ \texttt{ring{-}structure}
+  \item \texttt{prime{-}power{-}fiber{-}specialization} $\to$
+        \texttt{ring{-}equivalence}
+\end{itemize}
+We show these correspond to genuine granularity boundaries in the
+Lean formalization rather than cue-induced routing errors.
+
+A cross-model dissociation in Llama~3.3~70B is notable: verdict accuracy
+is identical in both conditions ($95.5\%$), while template accuracy
+improves $13.6$~pp with the cue. This confirms that truth inference and
+proof-mechanism classification are separable capacities---consistent with
+the Lean formalization, where a statement's truth value and its certificate
+family are encoded at different layers.
+
+These findings extend the \textbf{router hypothesis} introduced in
+C\'azares~(2026)~\cite{sair2026} from equational reasoning to formal
+algebraic structures: LLMs act as structural classifiers routing over
+broad mathematical types, and fail specifically at the level of
+fine-grained proof mechanisms. The full evaluation pipeline, prompt pack,
+and results are released at
+\url{https://github.com/bytepro-ai/fiberring-routing-eval}.
+\end{abstract}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+% DRAFT PLACEHOLDER — to be written after Wenlin approves abstract
+
+\section{Related Work}
+\label{sec:related}
+% DRAFT PLACEHOLDER
+
+\section{Dataset}
+\label{sec:dataset}
+% DRAFT PLACEHOLDER — FiberRing corpus, Set A design, 22-item schema
+
+\section{Methodology}
+\label{sec:methodology}
+% DRAFT PLACEHOLDER — A1/A2 conditions, label set, scoring protocol
+
+\section{Results}
+\label{sec:results}
+% DRAFT PLACEHOLDER — headline numbers, confusion matrix
+
+\section{Analysis}
+\label{sec:analysis}
+% Wenlin's Section 6 mathematical interpretation goes here
+
+\section{Discussion}
+\label{sec:discussion}
+% DRAFT PLACEHOLDER — router hypothesis extension, limitations
+
+\section{Conclusion}
+\label{sec:conclusion}
+% DRAFT PLACEHOLDER
+
+% ─────────────────────────────────────────────────────────────────────────────
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
