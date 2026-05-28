@@ -1,0 +1,358 @@
+{
+  "metadata": {
+    "dataset": "israel_setA_A1_A2",
+    "project": "FiberRing routing evaluation",
+    "version": "1.0.0",
+    "description": "A 22-item routing benchmark for classifying FiberRing formalization claims into proof-template buckets under blind (A1) and cue-conditioned (A2) prompting.",
+    "item_count": 22,
+    "prompt_count": 44
+  },
+  "allowed_labels": [
+    "ring-structure",
+    "operation-bridge",
+    "stable-value-map",
+    "ring-equivalence",
+    "affine-transfer",
+    "field-phase",
+    "CRT",
+    "prime-power-fiber-specialization",
+    "finite-zero-divisor-check",
+    "finite-unit-inverse-check",
+    "characteristic",
+    "rigidity",
+    "stable-value-arithmetic"
+  ],
+  "conditions": [
+    {
+      "condition": "A1",
+      "name": "blind structural routing",
+      "prompt_includes_lean_verdict": false,
+      "description": "The prompt shows only the item statement/object and the allowed routing labels."
+    },
+    {
+      "condition": "A2",
+      "name": "cue-conditioned routing",
+      "prompt_includes_lean_verdict": true,
+      "description": "The prompt also includes the known Lean verdict as a routing cue."
+    }
+  ],
+  "prompt_format": {
+    "A1": "You are routing a FiberRing formalization claim to the proof-template family it most directly uses.\\nItem ID: {item_id}\\nEquation or object: {equation_or_object}\\nAllowed templates: {allowed_labels}\\nReturn exactly four fields:\\nTemplate: <one allowed template>\\nVerdict: <True|False|Conditional|Unknown-from-statement>\\nReason: <one short sentence>\\nCaveat: <short caveat or none>",
+    "A2": "You are routing a FiberRing formalization claim to the proof-template family it most directly uses.\\nItem ID: {item_id}\\nEquation or object: {equation_or_object}\\nKnown Lean verdict: {lean_verdict}\\nAllowed templates: {allowed_labels}\\nReturn exactly four fields:\\nTemplate: <one allowed template>\\nVerdict: <True|False|Conditional|Unknown-from-statement>\\nReason: <one short sentence>\\nCaveat: <short caveat or none>"
+  },
+  "rows": [
+    {
+      "item_id": "fr-001",
+      "equation_or_object": "X_m ≃+* ZMod (Nat.fib (m + 2))",
+      "lean_verdict": "stableValueRingEquiv declares a ring equivalence from X_m to the corresponding Fibonacci modulus. Paper-facing theorems package the same equivalence.",
+      "expected_template": "ring-equivalence",
+      "expected_verdict": "True",
+      "bucket": "ring-equivalence",
+      "witness_family": "stableValueRingEquiv equivalence package",
+      "audit_pointer": "Check the global X_m-to-ZMod ring equivalence declarations.",
+      "ambiguity_notes": "Nearby confusions include stable-value-map when the answer focuses on toZMod preservation rather than the equivalence itself.",
+      "caveat_keywords": ["equivalence", "ZMod", "Fibonacci"]
+    },
+    {
+      "item_id": "fr-002",
+      "equation_or_object": "CommRing (X m)",
+      "lean_verdict": "A commutative ring instance for X_m is declared.",
+      "expected_template": "ring-structure",
+      "expected_verdict": "True",
+      "bucket": "ring-structure",
+      "witness_family": "CommRing instance witness",
+      "audit_pointer": "Check typeclass instance declarations for X m.",
+      "ambiguity_notes": "May be confused with ring-equivalence if the model infers structure only through transport.",
+      "caveat_keywords": ["CommRing", "instance", "structure"]
+    },
+    {
+      "item_id": "fr-003",
+      "equation_or_object": "Ring operations agree with stable operations: x + y = stableAdd x y, x * y = stableMul x y, 0 = stableZero, 1 = stableOne, -x = stableNeg x",
+      "lean_verdict": "Lean records operation alignment.",
+      "expected_template": "operation-bridge",
+      "expected_verdict": "True",
+      "bucket": "operation-bridge",
+      "witness_family": "stable operation alignment lemmas",
+      "audit_pointer": "Check lemmas connecting inherited ring operations to stableAdd/stableMul/stableZero/stableOne/stableNeg.",
+      "ambiguity_notes": "May be confused with stable-value-arithmetic when the response treats operation alignment as a numeric formula.",
+      "caveat_keywords": ["operation", "alignment", "stable"]
+    },
+    {
+      "item_id": "fr-004",
+      "equation_or_object": "toZMod preserves ring structure",
+      "lean_verdict": "Lean proves preservation of addition, multiplication, zero, and one for the stable value map.",
+      "expected_template": "stable-value-map",
+      "expected_verdict": "True",
+      "bucket": "stable-value-map",
+      "witness_family": "toZMod homomorphism preservation lemmas",
+      "audit_pointer": "Check preservation lemmas for toZMod/stableValue.",
+      "ambiguity_notes": "Nearby confusion is ring-equivalence if preservation is overstated as a full equivalence.",
+      "caveat_keywords": ["preserves", "addition", "multiplication"]
+    },
+    {
+      "item_id": "fr-005",
+      "equation_or_object": "Affine magma satisfaction transfers across X_m ≃ ZMod(F_{m+2})",
+      "lean_verdict": "Lean proves satisfaction equivalence for affine-linear magma equations under the stable-value ring equivalence.",
+      "expected_template": "affine-transfer",
+      "expected_verdict": "True",
+      "bucket": "affine-transfer",
+      "witness_family": "affine-linear satisfaction transfer theorem",
+      "audit_pointer": "Check affine magma satisfaction equivalence under stableValueRingEquiv.",
+      "ambiguity_notes": "May be confused with ring-equivalence because the transfer depends on the equivalence witness.",
+      "caveat_keywords": ["affine", "satisfaction", "transfer"]
+    },
+    {
+      "item_id": "fr-006",
+      "equation_or_object": "X_6 ≃+* ZMod 3 × ZMod 7",
+      "lean_verdict": "CRT decomposition for F_8 = 21 = 3 * 7 is declared, with a Nonempty package.",
+      "expected_template": "CRT",
+      "expected_verdict": "True",
+      "bucket": "CRT",
+      "witness_family": "CRT factorization witness for F_8",
+      "audit_pointer": "Check CRT decomposition declarations for m = 6 and F_8 = 21.",
+      "ambiguity_notes": "Can be confused with finite-zero-divisor-check because the same fiber has visible zero divisors.",
+      "caveat_keywords": ["CRT", "21", "3", "7"]
+    },
+    {
+      "item_id": "fr-007",
+      "equation_or_object": "X_7 ≃+* ZMod 2 × ZMod 17",
+      "lean_verdict": "CRT decomposition for F_9 = 34 = 2 * 17 is declared.",
+      "expected_template": "CRT",
+      "expected_verdict": "True",
+      "bucket": "CRT",
+      "witness_family": "CRT factorization witness for F_9",
+      "audit_pointer": "Check CRT decomposition declarations for m = 7 and F_9 = 34.",
+      "ambiguity_notes": "Composite factor routing should remain CRT rather than field-phase.",
+      "caveat_keywords": ["CRT", "34", "2", "17"]
+    },
+    {
+      "item_id": "fr-008",
+      "equation_or_object": "X_8 ≃+* ZMod 5 × ZMod 11",
+      "lean_verdict": "CRT decomposition for F_10 = 55 = 5 * 11 is declared.",
+      "expected_template": "CRT",
+      "expected_verdict": "True",
+      "bucket": "CRT",
+      "witness_family": "CRT factorization witness for F_10",
+      "audit_pointer": "Check CRT decomposition declarations for m = 8 and F_10 = 55.",
+      "ambiguity_notes": "Composite factor routing should remain CRT even though both factors are fields.",
+      "caveat_keywords": ["CRT", "55", "5", "11"]
+    },
+    {
+      "item_id": "fr-009",
+      "equation_or_object": "X_10 ≃+* ZMod 16 × ZMod 9",
+      "lean_verdict": "CRT decomposition for F_12 = 144 = 16 * 9 is declared.",
+      "expected_template": "CRT",
+      "expected_verdict": "True",
+      "bucket": "CRT",
+      "witness_family": "CRT factorization witness for F_12",
+      "audit_pointer": "Check CRT decomposition declarations for m = 10 and F_12 = 144.",
+      "ambiguity_notes": "May be confused with prime-power-fiber-specialization because the CRT factors are prime powers.",
+      "caveat_keywords": ["CRT", "144", "16", "9"]
+    },
+    {
+      "item_id": "fr-010",
+      "equation_or_object": "X_4 ≃+* ZMod 8",
+      "lean_verdict": "The stable-value equivalence specializes to X_4 ≃+* ZMod 8.",
+      "expected_template": "prime-power-fiber-specialization",
+      "expected_verdict": "True",
+      "bucket": "prime-power-fiber-specialization",
+      "witness_family": "single prime-power fiber specialization",
+      "audit_pointer": "Check the m = 4 specialization of stableValueRingEquiv.",
+      "ambiguity_notes": "Nearby confusion is ring-equivalence because the witness is still an equivalence, but the routed bucket is the prime-power specialization.",
+      "caveat_keywords": ["prime-power", "specializes", "ZMod 8"]
+    },
+    {
+      "item_id": "fr-011",
+      "equation_or_object": "Field phase: X_1",
+      "lean_verdict": "Field (X 1) instance is declared; the GF(2) interpretation follows.",
+      "expected_template": "field-phase",
+      "expected_verdict": "True",
+      "bucket": "field-phase",
+      "witness_family": "Field instance for prime Fibonacci modulus",
+      "audit_pointer": "Check Field instance declarations for X 1.",
+      "ambiguity_notes": "May be confused with ring-structure; field-phase is more specific.",
+      "caveat_keywords": ["Field", "GF(2)", "prime"]
+    },
+    {
+      "item_id": "fr-012",
+      "equation_or_object": "Field phase: X_2",
+      "lean_verdict": "Field (X 2) instance is declared; the GF(3) interpretation follows.",
+      "expected_template": "field-phase",
+      "expected_verdict": "True",
+      "bucket": "field-phase",
+      "witness_family": "Field instance for prime Fibonacci modulus",
+      "audit_pointer": "Check Field instance declarations for X 2.",
+      "ambiguity_notes": "May be confused with ring-structure; field-phase is more specific.",
+      "caveat_keywords": ["Field", "GF(3)", "prime"]
+    },
+    {
+      "item_id": "fr-013",
+      "equation_or_object": "Field phase: X_3",
+      "lean_verdict": "Field (X 3) instance is declared; the GF(5) interpretation follows.",
+      "expected_template": "field-phase",
+      "expected_verdict": "True",
+      "bucket": "field-phase",
+      "witness_family": "Field instance for prime Fibonacci modulus",
+      "audit_pointer": "Check Field instance declarations for X 3.",
+      "ambiguity_notes": "May be confused with ring-structure; field-phase is more specific.",
+      "caveat_keywords": ["Field", "GF(5)", "prime"]
+    },
+    {
+      "item_id": "fr-014",
+      "equation_or_object": "Field phase: X_5",
+      "lean_verdict": "Field (X 5) instance is declared; the GF(13) interpretation follows.",
+      "expected_template": "field-phase",
+      "expected_verdict": "True",
+      "bucket": "field-phase",
+      "witness_family": "Field instance for prime Fibonacci modulus",
+      "audit_pointer": "Check Field instance declarations for X 5.",
+      "ambiguity_notes": "May be confused with finite-unit-inverse-check if the GF(13) unit example is foregrounded.",
+      "caveat_keywords": ["Field", "GF(13)", "prime"]
+    },
+    {
+      "item_id": "fr-015",
+      "equation_or_object": "Field phase: X_9",
+      "lean_verdict": "Field (X 9) instance is declared; the GF(89) interpretation follows.",
+      "expected_template": "field-phase",
+      "expected_verdict": "True",
+      "bucket": "field-phase",
+      "witness_family": "Field instance for prime Fibonacci modulus",
+      "audit_pointer": "Check Field instance declarations for X 9.",
+      "ambiguity_notes": "May be confused with ring-equivalence if the response routes through X_9 ≃ ZMod 89.",
+      "caveat_keywords": ["Field", "GF(89)", "prime"]
+    },
+    {
+      "item_id": "fr-016",
+      "equation_or_object": "Field phase: X_11",
+      "lean_verdict": "Field (X 11) instance is declared; the GF(233) interpretation follows.",
+      "expected_template": "field-phase",
+      "expected_verdict": "True",
+      "bucket": "field-phase",
+      "witness_family": "Field instance for prime Fibonacci modulus",
+      "audit_pointer": "Check Field instance declarations for X 11.",
+      "ambiguity_notes": "May be confused with ring-equivalence if the response routes through X_11 ≃ ZMod 233.",
+      "caveat_keywords": ["Field", "GF(233)", "prime"]
+    },
+    {
+      "item_id": "fr-017",
+      "equation_or_object": "(7 : X 6) * (3 : X 6) = 0",
+      "lean_verdict": "Zero-divisor identity in X_6 is proved.",
+      "expected_template": "finite-zero-divisor-check",
+      "expected_verdict": "True",
+      "bucket": "finite-zero-divisor-check",
+      "witness_family": "explicit finite zero-divisor multiplication witness",
+      "audit_pointer": "Check finite calculation lemmas in X 6.",
+      "ambiguity_notes": "May be confused with CRT because the zero divisor is explained by the X_6 CRT decomposition.",
+      "caveat_keywords": ["zero-divisor", "X_6", "0"]
+    },
+    {
+      "item_id": "fr-018",
+      "equation_or_object": "stableValue (stableAdd x x) = 2 * stableValue x % F_{m+2}",
+      "lean_verdict": "Lean proves the stable-value doubling formula.",
+      "expected_template": "stable-value-arithmetic",
+      "expected_verdict": "True",
+      "bucket": "stable-value-arithmetic",
+      "witness_family": "stableValue arithmetic formula",
+      "audit_pointer": "Check stableValue doubling arithmetic lemma.",
+      "ambiguity_notes": "May be confused with operation-bridge because stableAdd appears, but the routed theorem is an arithmetic formula.",
+      "caveat_keywords": ["doubling", "stableValue", "mod"]
+    },
+    {
+      "item_id": "fr-019",
+      "equation_or_object": "(7 : X 5) * (2 : X 5) = 1",
+      "lean_verdict": "Unit/inverse identity in X_5 is proved.",
+      "expected_template": "finite-unit-inverse-check",
+      "expected_verdict": "True",
+      "bucket": "finite-unit-inverse-check",
+      "witness_family": "explicit finite unit inverse multiplication witness",
+      "audit_pointer": "Check finite calculation lemmas in X 5.",
+      "ambiguity_notes": "May be confused with field-phase because the unit inverse is explained by X_5 being a field.",
+      "caveat_keywords": ["unit", "inverse", "1"]
+    },
+    {
+      "item_id": "fr-020",
+      "equation_or_object": "stableValue (x^n) = stableValue(x)^n mod F_{m+2}",
+      "lean_verdict": "Lean proves the power formula for stable values.",
+      "expected_template": "stable-value-arithmetic",
+      "expected_verdict": "True",
+      "bucket": "stable-value-arithmetic",
+      "witness_family": "stableValue power arithmetic formula",
+      "audit_pointer": "Check stableValue power arithmetic lemma.",
+      "ambiguity_notes": "Nearby confusion is stable-value-map if the answer treats powers as generic homomorphism preservation.",
+      "caveat_keywords": ["power", "stableValue", "mod"]
+    },
+    {
+      "item_id": "fr-021",
+      "equation_or_object": "Additive order of 1 in X_m equals Nat.fib (m + 2) under 2 ≤ m",
+      "lean_verdict": "Lean proves addOrderOf (1 : X m) = Nat.fib (m + 2).",
+      "expected_template": "characteristic",
+      "expected_verdict": "Conditional",
+      "bucket": "characteristic",
+      "witness_family": "additive order/characteristic theorem with lower-bound hypothesis",
+      "audit_pointer": "Check addOrderOf theorem for (1 : X m) and the 2 ≤ m hypothesis.",
+      "ambiguity_notes": "May be confused with ring-equivalence because the proof can route through ZMod order; the condition under 2 ≤ m should be preserved.",
+      "caveat_keywords": ["2 ≤ m", "addOrderOf", "hypothesis", "conditional"]
+    },
+    {
+      "item_id": "fr-022",
+      "equation_or_object": "Ring automorphism rigidity of X_m",
+      "lean_verdict": "Lean proves every ring automorphism of X_m is pointwise the identity.",
+      "expected_template": "rigidity",
+      "expected_verdict": "True",
+      "bucket": "rigidity",
+      "witness_family": "ring automorphism pointwise identity theorem",
+      "audit_pointer": "Check ring automorphism rigidity theorem for X m.",
+      "ambiguity_notes": "May be confused with ring-equivalence if the response focuses on transported automorphisms rather than rigidity.",
+      "caveat_keywords": ["automorphism", "identity", "rigidity"]
+    }
+  ],
+  "scoring_rules": {
+    "template_accuracy": "Exact match after canonicalizing case, punctuation, underscores, spaces, and hyphenation.",
+    "verdict_accuracy": "A2 is scored against row expected_verdict. A1 is scored against expected_verdict but also accepts Unknown-from-statement as correct when the prompt does not expose a Lean verdict.",
+    "caveat_hit_rate": "For rows with caveat_keywords, a hit is recorded when any keyword appears in caveat, reason, or raw_response after case folding. Rows without keywords are excluded.",
+    "confusion_matrix": "Rows are expected_template labels and columns are canonicalized predicted_template labels over the allowed label set, with invalid or blank predictions counted as __other__.",
+    "headline_gap": "A2 minus A1 accuracy is computed per model for template accuracy, verdict accuracy, and caveat hit rate."
+  },
+  "expected_confusions": [
+    {
+      "from": "ring-equivalence",
+      "to": "stable-value-map",
+      "note": "Equivalence statements may be mistaken for preservation by the stable-value map."
+    },
+    {
+      "from": "operation-bridge",
+      "to": "stable-value-arithmetic",
+      "note": "Stable operation alignment can be mistaken for arithmetic identities after applying stableValue."
+    },
+    {
+      "from": "CRT",
+      "to": "field-phase",
+      "note": "CRT products with prime factors can be mistaken for field claims about individual factors."
+    },
+    {
+      "from": "CRT",
+      "to": "finite-zero-divisor-check",
+      "note": "Composite fiber decompositions explain zero divisors but are a separate routing family."
+    },
+    {
+      "from": "field-phase",
+      "to": "finite-unit-inverse-check",
+      "note": "Explicit inverses in field fibers should route to the finite check, not the field phase."
+    },
+    {
+      "from": "prime-power-fiber-specialization",
+      "to": "ring-equivalence",
+      "note": "A specialized equivalence to ZMod 8 is more specific than the general equivalence bucket."
+    },
+    {
+      "from": "characteristic",
+      "to": "ring-equivalence",
+      "note": "Additive order/characteristic facts can be proved through ZMod but are scored as characteristic."
+    },
+    {
+      "from": "rigidity",
+      "to": "ring-equivalence",
+      "note": "Automorphism rigidity may be explained through equivalence transport but has its own template."
+    }
+  ]
+}

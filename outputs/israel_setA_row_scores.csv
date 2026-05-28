@@ -1,0 +1,1057 @@
+model,condition,run,prompt_id,item_id,expected_template,predicted_template,canonical_predicted_template,template_correct,expected_verdict,predicted_verdict,canonical_predicted_verdict,verdict_correct,caveat_applicable,caveat_hit,reason,caveat,raw_response
+openai/gpt-oss-120b,A1,1,fr-001-A1,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The claim explicitly states a ring equivalence (≃+*) between X_m and a ZMod.,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim explicitly states a ring equivalence (≃+*) between X_m and a ZMod.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-001-A2,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The claim directly asserts a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim directly asserts a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-002-A1,fr-002,ring-structure,ring-structure,ring-structure,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim merely asserts a commutative ring structure without providing proof details.,none,"Template: ring-structure
+Verdict: Unknown-from-statement
+Reason: The claim merely asserts a commutative ring structure without providing proof details.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-002-A2,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,"The claim asserts a commutative ring instance for X m, which is declared in Lean.",none,"Template: ring-structure
+Verdict: True
+Reason: The claim asserts a commutative ring instance for X m, which is declared in Lean.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-003-A1,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,The claim directly asserts that each ring operation equals its corresponding stable operation.,none,"Template: operation-bridge
+Verdict: True
+Reason: The claim directly asserts that each ring operation equals its corresponding stable operation.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-003-A2,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,"The statement directly asserts equality between the ring’s basic operations and the corresponding stable operations, which Lean confirms.",none,"Template: operation-bridge
+Verdict: True
+Reason: The statement directly asserts equality between the ring’s basic operations and the corresponding stable operations, which Lean confirms.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-004-A1,fr-004,stable-value-map,ring-structure,ring-structure,False,True,Unknown-from-statement,Unknown-from-statement,True,True,False,The claim concerns preservation of ring operations by the toZMod map.,none,"Template: ring-structure
+Verdict: Unknown-from-statement
+Reason: The claim concerns preservation of ring operations by the toZMod map.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-004-A2,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,True,"The claim asserts that toZMod preserves addition, multiplication, zero, and one, i.e., the ring operations.",none,"Template: ring-structure
+Verdict: True
+Reason: The claim asserts that toZMod preserves addition, multiplication, zero, and one, i.e., the ring operations.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-005-A1,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,Conditional,Conditional,False,True,True,The transfer holds only if the equivalence X_m ≃ ZMod(F_{m+2}) preserves the affine magma operations.,Requires verification that the isomorphism respects the affine structure.,"Template: affine-transfer
+Verdict: Conditional
+Reason: The transfer holds only if the equivalence X_m ≃ ZMod(F_{m+2}) preserves the affine magma operations.
+Caveat: Requires verification that the isomorphism respects the affine structure."
+openai/gpt-oss-120b,A2,1,fr-005-A2,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,Lean proof shows affine magma satisfaction is preserved across the equivalence X_m ≃ ZMod(F_{m+2}).,none,"Template: affine-transfer
+Verdict: True
+Reason: Lean proof shows affine magma satisfaction is preserved across the equivalence X_m ≃ ZMod(F_{m+2}).
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-006-A1,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The isomorphism follows from the Chinese Remainder Theorem for 21 = 3·7.,Assumes X_6 is defined as ZMod 21 (or an equivalent ring).,"Template: CRT
+Verdict: True
+Reason: The isomorphism follows from the Chinese Remainder Theorem for 21 = 3·7.
+Caveat: Assumes X_6 is defined as ZMod 21 (or an equivalent ring)."
+openai/gpt-oss-120b,A2,1,fr-006-A2,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,Directly follows from the declared CRT decomposition for 21 = 3 × 7.,none,"Template: CRT
+Verdict: True
+Reason: Directly follows from the declared CRT decomposition for 21 = 3 × 7.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-007-A1,fr-007,CRT,ring-equivalence,ring-equivalence,False,True,Conditional,Conditional,False,True,True,The claim follows from the Chinese Remainder Theorem for coprime moduli 2 and 17.,It holds provided X₇ is defined as ℤ/34ℤ (or an equivalent ring).,"Template: ring-equivalence  
+Verdict: Conditional  
+Reason: The claim follows from the Chinese Remainder Theorem for coprime moduli 2 and 17.  
+Caveat: It holds provided X₇ is defined as ℤ/34ℤ (or an equivalent ring)."
+openai/gpt-oss-120b,A2,1,fr-007-A2,fr-007,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is a direct application of the Chinese Remainder Theorem decomposition.,none,"Template: CRT
+Verdict: True
+Reason: The claim is a direct application of the Chinese Remainder Theorem decomposition.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-008-A1,fr-008,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The claim explicitly states a ring isomorphism (≃+*).,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim explicitly states a ring isomorphism (≃+*).
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-008-A2,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,Direct application of the Chinese Remainder Theorem yields the ring equivalence.,none,"Template: CRT
+Verdict: True
+Reason: Direct application of the Chinese Remainder Theorem yields the ring equivalence.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-009-A1,fr-009,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The claim asserts a ring isomorphism (≃+*) between X_10 and a product of ZMod rings.,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim asserts a ring isomorphism (≃+*) between X_10 and a product of ZMod rings.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-009-A2,fr-009,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is exactly the CRT decomposition of the ring into ZMod 16 × ZMod 9.,none,"Template: CRT
+Verdict: True
+Reason: The claim is exactly the CRT decomposition of the ring into ZMod 16 × ZMod 9.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-010-A1,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The claim explicitly asserts a ring isomorphism (≃+*) between X₄ and ZMod 8.,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim explicitly asserts a ring isomorphism (≃+*) between X₄ and ZMod 8.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-010-A2,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,Directly follows from the stable-value equivalence specialization.,none,"Template: ring-equivalence
+Verdict: True
+Reason: Directly follows from the stable-value equivalence specialization.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-011-A1,fr-011,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only a label without a claim to evaluate.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only a label without a claim to evaluate.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-011-A2,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"A Field instance for X₁ is declared, confirming the GF(2) interpretation.",none,"Template: field-phase
+Verdict: True
+Reason: A Field instance for X₁ is declared, confirming the GF(2) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-012-A1,fr-012,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only the identifier of a field phase without enough context to assess its truth.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only the identifier of a field phase without enough context to assess its truth.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-012-A2,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The Field (X 2) instance is declared and aligns with the GF(3) interpretation.,none,"Template: field-phase
+Verdict: True
+Reason: The Field (X 2) instance is declared and aligns with the GF(3) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-013-A1,fr-013,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement only names a field phase (X_3) without asserting a verifiable claim.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement only names a field phase (X_3) without asserting a verifiable claim.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-013-A2,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"The Lean code declares a Field instance for X₃, interpreting it as GF(5).",none,"Template: field-phase
+Verdict: True
+Reason: The Lean code declares a Field instance for X₃, interpreting it as GF(5).
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-014-A1,fr-014,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim provides no sufficient context to determine its truth.,The definition or properties of X_5 are not given.,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The claim provides no sufficient context to determine its truth.
+Caveat: The definition or properties of X_5 are not given."
+openai/gpt-oss-120b,A2,1,fr-014-A2,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"The Lean code declares a Field instance for X_5, aligning with the GF(13) interpretation.",none,"Template: field-phase
+Verdict: True
+Reason: The Lean code declares a Field instance for X_5, aligning with the GF(13) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-015-A1,fr-015,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The item only names a field phase object without asserting a provable claim.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The item only names a field phase object without asserting a provable claim.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-015-A2,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"Lean declares a field instance for X₉, establishing the field phase (e.g., GF(89)).",none,"Template: field-phase
+Verdict: True
+Reason: Lean declares a field instance for X₉, establishing the field phase (e.g., GF(89)).
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-016-A1,fr-016,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only the object name without a claim to assess.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only the object name without a claim to assess.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-016-A2,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"The Lean code declares a Field instance for X_11, aligning with the GF(233) interpretation.",none,"Template: field-phase
+Verdict: True
+Reason: The Lean code declares a Field instance for X_11, aligning with the GF(233) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-017-A1,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,False,False,False,True,True,"In the ring X 6, 7 ≡ 1, so (7 : X 6) * (3 : X 6) = 1 * 3 = 3 ≠ 0.",none,"Template: finite-zero-divisor-check
+Verdict: False
+Reason: In the ring X 6, 7 ≡ 1, so (7 : X 6) * (3 : X 6) = 1 * 3 = 3 ≠ 0.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-017-A2,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,"The product (7 : X 6) * (3 : X 6) equals zero, establishing a zero‑divisor in the finite ring X₆.",none,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The product (7 : X 6) * (3 : X 6) equals zero, establishing a zero‑divisor in the finite ring X₆.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-018-A1,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,Unknown-from-statement,Unknown-from-statement,True,True,False,The statement’s truth cannot be determined from the given information alone.,none,"Template: stable-value-arithmetic
+Verdict: Unknown-from-statement
+Reason: The statement’s truth cannot be determined from the given information alone.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-018-A2,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The claim is a direct arithmetic property of the stableValue function.,none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The claim is a direct arithmetic property of the stableValue function.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-019-A1,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,"The claim asserts that two elements multiply to the multiplicative identity, which is a unit inverse check.",none,"Template: finite-unit-inverse-check
+Verdict: Unknown-from-statement
+Reason: The claim asserts that two elements multiply to the multiplicative identity, which is a unit inverse check.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-019-A2,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,True,True,True,True,True,"In X₅ the elements 7 and 2 multiply to the multiplicative identity, confirming they are mutual inverses.",none,"Template: finite-unit-inverse-check
+Verdict: True
+Reason: In X₅ the elements 7 and 2 multiply to the multiplicative identity, confirming they are mutual inverses.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-020-A1,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim concerns how the stableValue map interacts with exponentiation.,none,"Template: stable-value-arithmetic
+Verdict: Unknown-from-statement
+Reason: The claim concerns how the stableValue map interacts with exponentiation.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-020-A2,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The statement is a direct arithmetic property of stable values proved in Lean.,none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The statement is a direct arithmetic property of stable values proved in Lean.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-021-A1,fr-021,characteristic,characteristic,characteristic,True,Conditional,True,True,False,True,False,"The claim directly concerns the additive order of 1, i.e., the ring’s characteristic.",none,"Template: characteristic
+Verdict: True
+Reason: The claim directly concerns the additive order of 1, i.e., the ring’s characteristic.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-021-A2,fr-021,characteristic,characteristic,characteristic,True,Conditional,True,True,False,True,False,The claim directly identifies the additive order of 1 (the ring’s characteristic) with a Fibonacci number.,none,"Template: characteristic
+Verdict: True
+Reason: The claim directly identifies the additive order of 1 (the ring’s characteristic) with a Fibonacci number.
+Caveat: none"
+openai/gpt-oss-120b,A1,1,fr-022-A1,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,"The claim explicitly concerns the rigidity property of a ring automorphism, matching the rigidity template.",none,"Template: rigidity
+Verdict: True
+Reason: The claim explicitly concerns the rigidity property of a ring automorphism, matching the rigidity template.
+Caveat: none"
+openai/gpt-oss-120b,A2,1,fr-022-A2,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,"The claim states that every ring automorphism of X_m is the identity, a direct rigidity statement.",none,"Template: rigidity
+Verdict: True
+Reason: The claim states that every ring automorphism of X_m is the identity, a direct rigidity statement.
+Caveat: none"
+openai/gpt-oss-120b,A1,2,fr-001-A1,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a ring equivalence between X_m and ZMod (Nat.fib (m+2)).,none,"Template: ring-equivalence
+Verdict: Unknown-from-statement
+Reason: The claim asserts a ring equivalence between X_m and ZMod (Nat.fib (m+2)).
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-001-A1,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a ring equivalence but provides no evidence of its truth.,none,"Template: ring-equivalence
+Verdict: Unknown-from-statement
+Reason: The claim asserts a ring equivalence but provides no evidence of its truth.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-001-A1,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The equation establishes an isomorphism between two ring structures.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation establishes an isomorphism between two ring structures.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-001-A1,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The equation establishes an isomorphism between two ring structures.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation establishes an isomorphism between two ring structures.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-001-A1,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The equation establishes an isomorphism between two ring structures.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation establishes an isomorphism between two ring structures.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-001-A2,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The claim explicitly provides a ring equivalence between X_m and ZMod (Nat.fib (m+2)).,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim explicitly provides a ring equivalence between X_m and ZMod (Nat.fib (m+2)).
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-001-A2,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The claim directly states a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim directly states a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-001-A2,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The equation declares a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation declares a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-001-A2,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The equation declares a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation declares a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-001-A2,fr-001,ring-equivalence,ring-equivalence,ring-equivalence,True,True,True,True,True,True,True,The equation declares a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation declares a ring equivalence between X_m and ZMod (Nat.fib (m + 2)).
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-002-A1,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,The claim directly asserts that X m carries a commutative ring structure.,none,"Template: ring-structure
+Verdict: True
+Reason: The claim directly asserts that X m carries a commutative ring structure.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-002-A1,fr-002,ring-structure,ring-structure,ring-structure,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim merely asserts a commutative ring structure without providing evidence.,none,"Template: ring-structure
+Verdict: Unknown-from-statement
+Reason: The claim merely asserts a commutative ring structure without providing evidence.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-002-A1,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,The equation CommRing (X m) directly relates to the properties of a commutative ring.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation CommRing (X m) directly relates to the properties of a commutative ring.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-002-A1,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,The equation CommRing (X m) directly relates to the properties of a ring structure.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation CommRing (X m) directly relates to the properties of a ring structure.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-002-A1,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,The equation CommRing (X m) directly relates to the properties of a ring.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation CommRing (X m) directly relates to the properties of a ring.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-002-A2,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,"The claim asserts a commutative ring instance for X m, which is indeed declared.",none,"Template: ring-structure
+Verdict: True
+Reason: The claim asserts a commutative ring instance for X m, which is indeed declared.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-002-A2,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,"The claim asserts a commutative ring instance for X m, which is declared in Lean.",none,"Template: ring-structure
+Verdict: True
+Reason: The claim asserts a commutative ring instance for X m, which is declared in Lean.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-002-A2,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,The equation declares a commutative ring instance.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation declares a commutative ring instance.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-002-A2,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,The equation declares a commutative ring instance.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation declares a commutative ring instance.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-002-A2,fr-002,ring-structure,ring-structure,ring-structure,True,True,True,True,True,True,True,The equation declares a commutative ring instance.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation declares a commutative ring instance.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-003-A1,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a direct correspondence between standard ring operations and their stable counterparts.,none,"Template: operation-bridge
+Verdict: Unknown-from-statement
+Reason: The claim asserts a direct correspondence between standard ring operations and their stable counterparts.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-003-A1,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,The claim directly equates each ring operation with its corresponding stable operation.,none,"Template: operation-bridge
+Verdict: True
+Reason: The claim directly equates each ring operation with its corresponding stable operation.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-003-A1,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,The statement directly relates ring operations to stable operations.,None,"Template: operation-bridge
+Verdict: True
+Reason: The statement directly relates ring operations to stable operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-003-A1,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,The statement directly relates ring operations to stable operations.,None,"Template: operation-bridge
+Verdict: True
+Reason: The statement directly relates ring operations to stable operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-003-A1,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,The statement directly relates ring operations to stable operations.,None,"Template: operation-bridge
+Verdict: True
+Reason: The statement directly relates ring operations to stable operations.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-003-A2,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,"The claim asserts direct equalities between ring operations and their stable counterparts, which Lean confirms.",none,"Template: operation-bridge
+Verdict: True
+Reason: The claim asserts direct equalities between ring operations and their stable counterparts, which Lean confirms.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-003-A2,fr-003,operation-bridge,operation-bridge,operation-bridge,True,True,True,True,True,True,True,"The claim asserts direct equalities between ring operations and their stable versions, which Lean confirms.",none,"Template: operation-bridge
+Verdict: True
+Reason: The claim asserts direct equalities between ring operations and their stable versions, which Lean confirms.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-003-A2,fr-003,operation-bridge,ring-structure,ring-structure,False,True,True,True,True,True,True,The equation directly relates ring operations to their stable counterparts.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation directly relates ring operations to their stable counterparts.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-003-A2,fr-003,operation-bridge,ring-structure,ring-structure,False,True,True,True,True,True,True,The equation directly relates ring operations to their stable counterparts.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation directly relates ring operations to their stable counterparts.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-003-A2,fr-003,operation-bridge,ring-structure,ring-structure,False,True,True,True,True,True,True,The equation directly relates ring operations to their stable counterparts.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation directly relates ring operations to their stable counterparts.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-004-A1,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,True,"The claim states that the toZMod map is a ring homomorphism, i.e., it preserves addition and multiplication.",none,"Template: ring-structure
+Verdict: True
+Reason: The claim states that the toZMod map is a ring homomorphism, i.e., it preserves addition and multiplication.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-004-A1,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,True,"The claim states that the toZMod map respects addition and multiplication, i.e., it is a ring homomorphism.",none,"Template: ring-structure
+Verdict: True
+Reason: The claim states that the toZMod map respects addition and multiplication, i.e., it is a ring homomorphism.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-004-A1,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,False,The claim directly involves preserving ring structure.,None,"Template: ring-structure
+Verdict: True
+Reason: The claim directly involves preserving ring structure.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-004-A1,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,False,The claim directly involves preserving ring structure.,None,"Template: ring-structure
+Verdict: True
+Reason: The claim directly involves preserving ring structure.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-004-A1,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,False,The claim directly involves preserving ring structure.,None,"Template: ring-structure
+Verdict: True
+Reason: The claim directly involves preserving ring structure.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-004-A2,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,True,"The claim asserts that the toZMod map preserves addition, multiplication, zero, and one, i.e., the ring operations.",none,"Template: ring-structure
+Verdict: True
+Reason: The claim asserts that the toZMod map preserves addition, multiplication, zero, and one, i.e., the ring operations.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-004-A2,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,True,"The toZMod map is shown to preserve addition, multiplication, zero, and one.",none,"Template: ring-structure
+Verdict: True
+Reason: The toZMod map is shown to preserve addition, multiplication, zero, and one.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-004-A2,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,False,Lean proves preservation of ring operations and constants.,None,"Template: ring-structure
+Verdict: True
+Reason: Lean proves preservation of ring operations and constants.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-004-A2,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,False,Lean proves preservation of ring operations and constants.,None,"Template: ring-structure
+Verdict: True
+Reason: Lean proves preservation of ring operations and constants.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-004-A2,fr-004,stable-value-map,ring-structure,ring-structure,False,True,True,True,True,True,False,Lean proves preservation of ring operations.,None,"Template: ring-structure
+Verdict: True
+Reason: Lean proves preservation of ring operations.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-005-A1,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a transfer of affine magma satisfaction across an equivalence but provides no proof.,Verification of the equivalence X_m ≃ ZMod(F_{m+2}) is needed.,"Template: affine-transfer
+Verdict: Unknown-from-statement
+Reason: The claim asserts a transfer of affine magma satisfaction across an equivalence but provides no proof.
+Caveat: Verification of the equivalence X_m ≃ ZMod(F_{m+2}) is needed."
+openai/gpt-oss-120b,A1,3,fr-005-A1,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a transfer of affine magma satisfaction across an equivalence but provides no proof.,none,"Template: affine-transfer
+Verdict: Unknown-from-statement
+Reason: The claim asserts a transfer of affine magma satisfaction across an equivalence but provides no proof.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-005-A1,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,The statement involves transferring affine magma satisfaction across an isomorphism.,Requires verification of X_m ≃ ZMod(F_{m+2}) isomorphism properties.,"Template: affine-transfer
+Verdict: True
+Reason: The statement involves transferring affine magma satisfaction across an isomorphism.
+Caveat: Requires verification of X_m ≃ ZMod(F_{m+2}) isomorphism properties."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-005-A1,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,The equation involves transferring affine magma satisfaction across an isomorphism.,Requires verification of X_m ≃ ZMod(F_{m+2}) isomorphism properties.,"Template: affine-transfer
+Verdict: True
+Reason: The equation involves transferring affine magma satisfaction across an isomorphism.
+Caveat: Requires verification of X_m ≃ ZMod(F_{m+2}) isomorphism properties."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-005-A1,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,The equation involves transferring satisfaction across an isomorphism.,None,"Template: affine-transfer
+Verdict: True
+Reason: The equation involves transferring satisfaction across an isomorphism.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-005-A2,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,Lean proves the satisfaction equivalence for affine-linear magma equations under the given ring equivalence.,none,"Template: affine-transfer
+Verdict: True
+Reason: Lean proves the satisfaction equivalence for affine-linear magma equations under the given ring equivalence.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-005-A2,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,Lean proves that affine magma satisfaction is equivalent under the isomorphism X_m ≃ ZMod(F_{m+2}).,none,"Template: affine-transfer
+Verdict: True
+Reason: Lean proves that affine magma satisfaction is equivalent under the isomorphism X_m ≃ ZMod(F_{m+2}).
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-005-A2,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,The equation involves affine magma satisfaction transferring across a ring equivalence.,Requires stable-value ring equivalence conditions.,"Template: affine-transfer
+Verdict: True
+Reason: The equation involves affine magma satisfaction transferring across a ring equivalence.
+Caveat: Requires stable-value ring equivalence conditions."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-005-A2,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,The statement directly involves transferring affine magma satisfaction across a ring equivalence.,Requires stable-value ring equivalence conditions.,"Template: affine-transfer
+Verdict: True
+Reason: The statement directly involves transferring affine magma satisfaction across a ring equivalence.
+Caveat: Requires stable-value ring equivalence conditions."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-005-A2,fr-005,affine-transfer,affine-transfer,affine-transfer,True,True,True,True,True,True,True,The equation involves affine magma satisfaction across a ring equivalence.,None,"Template: affine-transfer
+Verdict: True
+Reason: The equation involves affine magma satisfaction across a ring equivalence.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-006-A1,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,"The claim asserts a ring isomorphism with a product of coprime ZMod rings, which is the classic Chinese Remainder Theorem situation.",none,"Template: CRT
+Verdict: True
+Reason: The claim asserts a ring isomorphism with a product of coprime ZMod rings, which is the classic Chinese Remainder Theorem situation.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-006-A1,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,"The claim asserts a ring isomorphism between a ring and the product ZMod 3 × ZMod 7, which is precisely the statement of the Chinese Remainder Theorem for coprime moduli.",none,"Template: CRT
+Verdict: True
+Reason: The claim asserts a ring isomorphism between a ring and the product ZMod 3 × ZMod 7, which is precisely the statement of the Chinese Remainder Theorem for coprime moduli.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-006-A1,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation represents a decomposition using the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation represents a decomposition using the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-006-A1,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a product of ZMod terms.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a product of ZMod terms.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-006-A1,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a product of ZMod terms with relatively prime moduli.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a product of ZMod terms with relatively prime moduli.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-006-A2,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is exactly the Chinese Remainder Theorem decomposition of ZMod 21 into ZMod 3 × ZMod 7.,none,"Template: CRT
+Verdict: True
+Reason: The claim is exactly the Chinese Remainder Theorem decomposition of ZMod 21 into ZMod 3 × ZMod 7.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-006-A2,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is exactly the Chinese Remainder Theorem decomposition of ZMod 21 into ZMod 3 × ZMod 7.,none,"Template: CRT
+Verdict: True
+Reason: The claim is exactly the Chinese Remainder Theorem decomposition of ZMod 21 into ZMod 3 × ZMod 7.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-006-A2,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation directly applies the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation directly applies the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-006-A2,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation represents a CRT decomposition.,None,"Template: CRT
+Verdict: True
+Reason: The equation represents a CRT decomposition.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-006-A2,fr-006,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation directly applies the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation directly applies the Chinese Remainder Theorem.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-007-A1,fr-007,CRT,ring-equivalence,ring-equivalence,False,True,Conditional,Conditional,False,True,True,"The claim asserts a ring isomorphism, which holds if X₇ is defined as ℤ/34ℤ (by the Chinese Remainder Theorem).",Depends on the specific definition of X₇.,"Template: ring-equivalence  
+Verdict: Conditional  
+Reason: The claim asserts a ring isomorphism, which holds if X₇ is defined as ℤ/34ℤ (by the Chinese Remainder Theorem).  
+Caveat: Depends on the specific definition of X₇."
+openai/gpt-oss-120b,A1,3,fr-007-A1,fr-007,CRT,ring-equivalence,ring-equivalence,False,True,Conditional,Conditional,False,True,True,"The claim asserts a ring isomorphism, which holds if X₇ is defined as ℤ/34ℤ (by the Chinese Remainder Theorem).",Depends on the specific definition of X₇.,"Template: ring-equivalence  
+Verdict: Conditional  
+Reason: The claim asserts a ring isomorphism, which holds if X₇ is defined as ℤ/34ℤ (by the Chinese Remainder Theorem).  
+Caveat: Depends on the specific definition of X₇."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-007-A1,fr-007,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The equation represents an isomorphism between two rings.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation represents an isomorphism between two rings.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-007-A1,fr-007,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The equation represents an isomorphism between two rings.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation represents an isomorphism between two rings.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-007-A1,fr-007,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The equation represents an isomorphism between two rings.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation represents an isomorphism between two rings.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-007-A2,fr-007,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is a direct instance of the Chinese Remainder Theorem decomposition.,none,"Template: CRT
+Verdict: True
+Reason: The claim is a direct instance of the Chinese Remainder Theorem decomposition.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-007-A2,fr-007,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is a direct instance of the Chinese Remainder Theorem decomposition for 34 = 2 × 17.,none,"Template: CRT
+Verdict: True
+Reason: The claim is a direct instance of the Chinese Remainder Theorem decomposition for 34 = 2 × 17.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-007-A2,fr-007,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a decomposition using the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a decomposition using the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-007-A2,fr-007,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a decomposition using the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a decomposition using the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-007-A2,fr-007,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a decomposition using the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a decomposition using the Chinese Remainder Theorem.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-008-A1,fr-008,CRT,CRT,CRT,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a standard Chinese Remainder Theorem isomorphism.,none,"Template: CRT
+Verdict: Unknown-from-statement
+Reason: The claim asserts a standard Chinese Remainder Theorem isomorphism.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-008-A1,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,"The claim asserts a ring isomorphism decomposing a modulus into a product of coprime components, matching the Chinese Remainder Theorem.",none,"Template: CRT
+Verdict: True
+Reason: The claim asserts a ring isomorphism decomposing a modulus into a product of coprime components, matching the Chinese Remainder Theorem.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-008-A1,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a product of ZMod terms with relatively prime moduli.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a product of ZMod terms with relatively prime moduli.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-008-A1,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a product of ZMod terms.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a product of ZMod terms.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-008-A1,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a product of ZMod terms with relatively prime moduli.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a product of ZMod terms with relatively prime moduli.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-008-A2,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim directly asserts the Chinese Remainder Theorem decomposition of the ring into ZMod 5 × ZMod 11.,none,"Template: CRT
+Verdict: True
+Reason: The claim directly asserts the Chinese Remainder Theorem decomposition of the ring into ZMod 5 × ZMod 11.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-008-A2,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The Chinese Remainder Theorem gives a ring equivalence between ZMod 55 (≃ X_8) and ZMod 5 × ZMod 11.,none,"Template: CRT
+Verdict: True
+Reason: The Chinese Remainder Theorem gives a ring equivalence between ZMod 55 (≃ X_8) and ZMod 5 × ZMod 11.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-008-A2,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a decomposition using the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a decomposition using the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-008-A2,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation directly applies the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation directly applies the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-008-A2,fr-008,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation represents a CRT decomposition.,None,"Template: CRT
+Verdict: True
+Reason: The equation represents a CRT decomposition.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-009-A1,fr-009,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The claim explicitly states a ring equivalence (≃+*).,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim explicitly states a ring equivalence (≃+*).
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-009-A1,fr-009,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The claim explicitly states a ring equivalence (≃+*).,none,"Template: ring-equivalence
+Verdict: True
+Reason: The claim explicitly states a ring equivalence (≃+*).
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-009-A1,fr-009,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The equation represents an isomorphism between two rings.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation represents an isomorphism between two rings.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-009-A1,fr-009,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The equation represents an isomorphism between two rings.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation represents an isomorphism between two rings.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-009-A1,fr-009,CRT,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The equation represents an isomorphism between two ring structures.,Requires verification of the specific ring operations and properties.,"Template: ring-equivalence
+Verdict: True
+Reason: The equation represents an isomorphism between two ring structures.
+Caveat: Requires verification of the specific ring operations and properties."
+openai/gpt-oss-120b,A2,2,fr-009-A2,fr-009,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is exactly the CRT decomposition of the ring into ZMod 16 × ZMod 9.,none,"Template: CRT
+Verdict: True
+Reason: The claim is exactly the CRT decomposition of the ring into ZMod 16 × ZMod 9.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-009-A2,fr-009,CRT,CRT,CRT,True,True,True,True,True,True,True,The claim is a direct instance of the Chinese Remainder Theorem decomposition for 144 = 16 × 9.,none,"Template: CRT
+Verdict: True
+Reason: The claim is a direct instance of the Chinese Remainder Theorem decomposition for 144 = 16 × 9.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-009-A2,fr-009,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a decomposition using the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a decomposition using the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-009-A2,fr-009,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation involves a decomposition using the Chinese Remainder Theorem.,None,"Template: CRT
+Verdict: True
+Reason: The equation involves a decomposition using the Chinese Remainder Theorem.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-009-A2,fr-009,CRT,CRT,CRT,True,True,True,True,True,True,True,The equation directly utilizes the Chinese Remainder Theorem (CRT) for decomposition.,None,"Template: CRT
+Verdict: True
+Reason: The equation directly utilizes the Chinese Remainder Theorem (CRT) for decomposition.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-010-A1,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,Unknown-from-statement,Unknown-from-statement,True,True,False,The statement asserts a ring isomorphism without providing evidence.,none,"Template: ring-equivalence
+Verdict: Unknown-from-statement
+Reason: The statement asserts a ring isomorphism without providing evidence.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-010-A1,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,Unknown-from-statement,Unknown-from-statement,True,True,False,The claim asserts a ring isomorphism between X₄ and ZMod 8.,none,"Template: ring-equivalence
+Verdict: Unknown-from-statement
+Reason: The claim asserts a ring isomorphism between X₄ and ZMod 8.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-010-A1,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,True,The equation X_4 ≃+* ZMod 8 represents a ring equivalence.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation X_4 ≃+* ZMod 8 represents a ring equivalence.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-010-A1,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,True,The equation X_4 ≃+* ZMod 8 represents a ring equivalence.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation X_4 ≃+* ZMod 8 represents a ring equivalence.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-010-A1,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,True,The equation X_4 ≃+* ZMod 8 represents a ring equivalence.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The equation X_4 ≃+* ZMod 8 represents a ring equivalence.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-010-A2,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The stable‑value equivalence directly provides a ring isomorphism X₄ ≃+* ZMod 8.,none,"Template: ring-equivalence
+Verdict: True
+Reason: The stable‑value equivalence directly provides a ring isomorphism X₄ ≃+* ZMod 8.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-010-A2,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,True,The stable-value equivalence directly provides a ring isomorphism X_4 ≃+* ZMod 8.,none,"Template: ring-equivalence
+Verdict: True
+Reason: The stable-value equivalence directly provides a ring isomorphism X_4 ≃+* ZMod 8.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-010-A2,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The statement directly claims a ring equivalence.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The statement directly claims a ring equivalence.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-010-A2,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The statement directly claims a ring equivalence.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The statement directly claims a ring equivalence.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-010-A2,fr-010,prime-power-fiber-specialization,ring-equivalence,ring-equivalence,False,True,True,True,True,True,False,The statement directly claims a ring equivalence.,None,"Template: ring-equivalence
+Verdict: True
+Reason: The statement directly claims a ring equivalence.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-011-A1,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"The claim directly asserts a field phase property, matching the field-phase template.",none,"Template: field-phase
+Verdict: True
+Reason: The claim directly asserts a field phase property, matching the field-phase template.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-011-A1,fr-011,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only the object name without a claim to assess.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only the object name without a claim to assess.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-011-A1,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The given equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The given equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-011-A1,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The given equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The given equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-011-A1,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-011-A2,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"Lean declares a Field instance for X₁, confirming the GF(2) interpretation.",none,"Template: field-phase
+Verdict: True
+Reason: Lean declares a Field instance for X₁, confirming the GF(2) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-011-A2,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"Lean declares a Field instance for X₁, confirming the GF(2) interpretation.",none,"Template: field-phase
+Verdict: True
+Reason: Lean declares a Field instance for X₁, confirming the GF(2) interpretation.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-011-A2,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-011-A2,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-011-A2,fr-011,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-012-A1,fr-012,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only the identifier of a field phase without enough context to assess truth.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only the identifier of a field phase without enough context to assess truth.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-012-A1,fr-012,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only the name of a field phase without any claim to verify.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only the name of a field phase without any claim to verify.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-012-A1,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-012-A1,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-012-A1,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-012-A2,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The Field (X 2) instance is declared and aligns with the GF(3) interpretation.,none,"Template: field-phase
+Verdict: True
+Reason: The Field (X 2) instance is declared and aligns with the GF(3) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-012-A2,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The Field (X 2) instance is declared and aligns with the GF(3) interpretation.,none,"Template: field-phase
+Verdict: True
+Reason: The Field (X 2) instance is declared and aligns with the GF(3) interpretation.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-012-A2,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-012-A2,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-012-A2,fr-012,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-013-A1,fr-013,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only a label without sufficient context to evaluate its truth.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only a label without sufficient context to evaluate its truth.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-013-A1,fr-013,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim provides only a field phase identifier without enough context to assess truth.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The claim provides only a field phase identifier without enough context to assess truth.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-013-A1,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The given equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The given equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-013-A1,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-013-A1,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The given equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The given equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-013-A2,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The Field (X 3) instance is declared and aligns with the GF(5) interpretation.,none,"Template: field-phase
+Verdict: True
+Reason: The Field (X 3) instance is declared and aligns with the GF(5) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-013-A2,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The Field (X 3) instance is declared and aligns with the GF(5) interpretation.,none,"Template: field-phase
+Verdict: True
+Reason: The Field (X 3) instance is declared and aligns with the GF(5) interpretation.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-013-A2,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-013-A2,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-013-A2,fr-013,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-014-A1,fr-014,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim provides only a label without sufficient context to assess truth.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The claim provides only a label without sufficient context to assess truth.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-014-A1,fr-014,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only a label without sufficient context to assess truth.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only a label without sufficient context to assess truth.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-014-A1,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-014-A1,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-014-A1,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The given equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The given equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-014-A2,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"The Lean code declares a Field instance for X 5, aligning with the GF(13) interpretation.",none,"Template: field-phase
+Verdict: True
+Reason: The Lean code declares a Field instance for X 5, aligning with the GF(13) interpretation.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-014-A2,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"The Lean code declares a Field instance for X 5, aligning with the GF(13) interpretation.",none,"Template: field-phase
+Verdict: True
+Reason: The Lean code declares a Field instance for X 5, aligning with the GF(13) interpretation.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-014-A2,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-014-A2,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-014-A2,fr-014,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-015-A1,fr-015,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The item only names a field phase object without asserting a provable claim.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The item only names a field phase object without asserting a provable claim.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-015-A1,fr-015,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The item merely names a field phase without asserting a provable claim.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The item merely names a field phase without asserting a provable claim.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-015-A1,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-015-A1,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-015-A1,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-015-A2,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"A Field instance for X₉ is declared, establishing the required field phase (e.g., GF(89)).",none,"Template: field-phase
+Verdict: True
+Reason: A Field instance for X₉ is declared, establishing the required field phase (e.g., GF(89)).
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-015-A2,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"Lean declares a Field instance for X_9, confirming the field phase.",none,"Template: field-phase
+Verdict: True
+Reason: Lean declares a Field instance for X_9, confirming the field phase.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-015-A2,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-015-A2,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-015-A2,fr-015,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-016-A1,fr-016,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement only names a field phase object without asserting a claim.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement only names a field phase object without asserting a claim.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-016-A1,fr-016,field-phase,field-phase,field-phase,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The statement provides only a label without sufficient context to determine its validity.,none,"Template: field-phase
+Verdict: Unknown-from-statement
+Reason: The statement provides only a label without sufficient context to determine its validity.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-016-A1,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-016-A1,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-016-A1,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-016-A2,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"A Field instance for X 11 is declared, establishing the required field phase.",none,"Template: field-phase
+Verdict: True
+Reason: A Field instance for X 11 is declared, establishing the required field phase.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-016-A2,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,"A Field instance for X_11 is declared, confirming the field phase.",none,"Template: field-phase
+Verdict: True
+Reason: A Field instance for X_11 is declared, confirming the field phase.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-016-A2,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-016-A2,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-016-A2,fr-016,field-phase,field-phase,field-phase,True,True,True,True,True,True,True,The equation or object is directly related to the field phase.,None,"Template: field-phase
+Verdict: True
+Reason: The equation or object is directly related to the field phase.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-017-A1,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,False,False,False,True,True,"In the ring ℤ/6, 7 ≡ 1 and 1·3 = 3 ≠ 0.",none,"Template: finite-zero-divisor-check
+Verdict: False
+Reason: In the ring ℤ/6, 7 ≡ 1 and 1·3 = 3 ≠ 0.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-017-A1,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,False,False,False,True,True,"In the fiber ring X 6, 7 ≡ 1 and 3 ≡ 3, so 1·3 = 3 ≠ 0.",none,"Template: finite-zero-divisor-check
+Verdict: False
+Reason: In the fiber ring X 6, 7 ≡ 1 and 3 ≡ 3, so 1·3 = 3 ≠ 0.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-017-A1,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,The equation implies the existence of zero divisors.,None,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The equation implies the existence of zero divisors.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-017-A1,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,The equation implies the existence of zero divisors.,None,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The equation implies the existence of zero divisors.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-017-A1,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,The equation implies the existence of zero divisors.,None,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The equation implies the existence of zero divisors.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-017-A2,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,"The product of the nonzero elements 7 and 3 in X₆ is zero, establishing a zero‑divisor identity.",none,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The product of the nonzero elements 7 and 3 in X₆ is zero, establishing a zero‑divisor identity.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-017-A2,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,The claim is a proven zero‑divisor identity in the finite fiber ring X₆.,none,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The claim is a proven zero‑divisor identity in the finite fiber ring X₆.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-017-A2,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,The equation represents a zero-divisor identity in X_6.,None,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The equation represents a zero-divisor identity in X_6.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-017-A2,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,The equation represents a zero-divisor identity in X_6.,None,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The equation represents a zero-divisor identity in X_6.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-017-A2,fr-017,finite-zero-divisor-check,finite-zero-divisor-check,finite-zero-divisor-check,True,True,True,True,True,True,True,The equation represents a zero-divisor identity in X_6.,None,"Template: finite-zero-divisor-check
+Verdict: True
+Reason: The equation represents a zero-divisor identity in X_6.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-018-A1,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,"The statement relates the stableValue of a stableAdd operation to a scalar multiple, an arithmetic property of the stableValue map.",none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The statement relates the stableValue of a stableAdd operation to a scalar multiple, an arithmetic property of the stableValue map.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-018-A1,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The claim directly expresses how the stableValue of a stableAdd operation translates to multiplication by 2.,none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The claim directly expresses how the stableValue of a stableAdd operation translates to multiplication by 2.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-018-A1,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The equation involves stableValue and arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation involves stableValue and arithmetic operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-018-A1,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The equation involves stableValue and arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation involves stableValue and arithmetic operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-018-A1,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The equation involves stableValue and arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation involves stableValue and arithmetic operations.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-018-A2,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The claim directly states an arithmetic property of the stableValue function.,none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The claim directly states an arithmetic property of the stableValue function.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-018-A2,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The claim directly expresses an arithmetic property of the stableValue under addition.,none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The claim directly expresses an arithmetic property of the stableValue under addition.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-018-A2,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The equation directly relates stable values using arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation directly relates stable values using arithmetic operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-018-A2,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The equation directly relates stable values using arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation directly relates stable values using arithmetic operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-018-A2,fr-018,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The equation directly relates stable values using arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation directly relates stable values using arithmetic operations.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-019-A1,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a unit inverse relation without providing details of the ring X 5.,Depends on the specific structure of X 5.,"Template: finite-unit-inverse-check  
+Verdict: Unknown-from-statement  
+Reason: The claim asserts a unit inverse relation without providing details of the ring X 5.  
+Caveat: Depends on the specific structure of X 5."
+openai/gpt-oss-120b,A1,3,fr-019-A1,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim asserts a unit inverse relation without providing enough context to confirm its truth.,none,"Template: finite-unit-inverse-check
+Verdict: Unknown-from-statement
+Reason: The claim asserts a unit inverse relation without providing enough context to confirm its truth.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-019-A1,fr-019,finite-unit-inverse-check,ring-structure,ring-structure,False,True,True,True,True,True,False,The equation demonstrates a basic property of ring multiplication.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation demonstrates a basic property of ring multiplication.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-019-A1,fr-019,finite-unit-inverse-check,ring-structure,ring-structure,False,True,True,True,True,True,False,The equation demonstrates a basic property of ring multiplication.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation demonstrates a basic property of ring multiplication.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-019-A1,fr-019,finite-unit-inverse-check,ring-structure,ring-structure,False,True,True,True,True,True,False,The equation demonstrates a basic property of ring multiplication.,None,"Template: ring-structure
+Verdict: True
+Reason: The equation demonstrates a basic property of ring multiplication.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-019-A2,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,True,True,True,True,True,"The multiplication of 7 and 2 yields the multiplicative identity in X₅, confirming the inverse relationship.",none,"Template: finite-unit-inverse-check
+Verdict: True
+Reason: The multiplication of 7 and 2 yields the multiplicative identity in X₅, confirming the inverse relationship.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-019-A2,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,True,True,True,True,True,The multiplication of the two units 7 and 2 in X₅ yields the multiplicative identity 1.,none,"Template: finite-unit-inverse-check
+Verdict: True
+Reason: The multiplication of the two units 7 and 2 in X₅ yields the multiplicative identity 1.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-019-A2,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,True,True,True,True,True,The equation verifies the unit/inverse identity in X_5.,None,"Template: finite-unit-inverse-check
+Verdict: True
+Reason: The equation verifies the unit/inverse identity in X_5.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-019-A2,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,True,True,True,True,True,The equation verifies the unit/inverse identity in X_5.,None,"Template: finite-unit-inverse-check
+Verdict: True
+Reason: The equation verifies the unit/inverse identity in X_5.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-019-A2,fr-019,finite-unit-inverse-check,finite-unit-inverse-check,finite-unit-inverse-check,True,True,True,True,True,True,True,The equation verifies the unit/inverse identity in X_5.,None,"Template: finite-unit-inverse-check
+Verdict: True
+Reason: The equation verifies the unit/inverse identity in X_5.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-020-A1,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,"The claim asserts that the stableValue map preserves exponentiation, an arithmetic property.",none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The claim asserts that the stableValue map preserves exponentiation, an arithmetic property.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-020-A1,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,"The claim asserts that the stableValue map preserves exponentiation, an arithmetic property.",none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The claim asserts that the stableValue map preserves exponentiation, an arithmetic property.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-020-A1,fr-020,stable-value-arithmetic,stable-value-map,stable-value-map,False,True,True,True,True,True,True,The equation directly relates stableValue of a power to the power of stableValue.,None,"Template: stable-value-map
+Verdict: True
+Reason: The equation directly relates stableValue of a power to the power of stableValue.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-020-A1,fr-020,stable-value-arithmetic,stable-value-map,stable-value-map,False,True,True,True,True,True,True,The equation directly relates stableValue of a power to the power of stableValue.,None,"Template: stable-value-map
+Verdict: True
+Reason: The equation directly relates stableValue of a power to the power of stableValue.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-020-A1,fr-020,stable-value-arithmetic,stable-value-map,stable-value-map,False,True,True,True,True,True,True,The equation directly relates stableValue of a power to the power of stableValue.,None,"Template: stable-value-map
+Verdict: True
+Reason: The equation directly relates stableValue of a power to the power of stableValue.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-020-A2,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The statement is an arithmetic property of stable values proved in Lean.,none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The statement is an arithmetic property of stable values proved in Lean.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-020-A2,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,True,The claim is a direct arithmetic property of the stableValue map for powers.,none,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The claim is a direct arithmetic property of the stableValue map for powers.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-020-A2,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The equation directly relates stable values using arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation directly relates stable values using arithmetic operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-020-A2,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The equation directly relates stable values using arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation directly relates stable values using arithmetic operations.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-020-A2,fr-020,stable-value-arithmetic,stable-value-arithmetic,stable-value-arithmetic,True,True,True,True,True,True,False,The equation directly relates stable values using arithmetic operations.,None,"Template: stable-value-arithmetic
+Verdict: True
+Reason: The equation directly relates stable values using arithmetic operations.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-021-A1,fr-021,characteristic,characteristic,characteristic,True,Conditional,True,True,False,True,False,The additive order of 1 is precisely the ring’s characteristic.,none,"Template: characteristic
+Verdict: True
+Reason: The additive order of 1 is precisely the ring’s characteristic.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-021-A1,fr-021,characteristic,characteristic,characteristic,True,Conditional,True,True,False,True,False,The claim directly identifies the additive order of 1 (the ring’s characteristic) with a Fibonacci number.,none,"Template: characteristic
+Verdict: True
+Reason: The claim directly identifies the additive order of 1 (the ring’s characteristic) with a Fibonacci number.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-021-A1,fr-021,characteristic,stable-value-map,stable-value-map,False,Conditional,True,True,False,True,False,The equation relates the additive order of an element in a FiberRing to a known sequence (Nat.fib).,Requires m ≥ 2.,"Template: stable-value-map
+Verdict: True
+Reason: The equation relates the additive order of an element in a FiberRing to a known sequence (Nat.fib).
+Caveat: Requires m ≥ 2."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-021-A1,fr-021,characteristic,stable-value-map,stable-value-map,False,Conditional,True,True,False,True,False,The equation relates the additive order of an element in a FiberRing to a known sequence (Nat.fib).,Requires m ≥ 2.,"Template: stable-value-map
+Verdict: True
+Reason: The equation relates the additive order of an element in a FiberRing to a known sequence (Nat.fib).
+Caveat: Requires m ≥ 2."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-021-A1,fr-021,characteristic,stable-value-map,stable-value-map,False,Conditional,True,True,False,True,False,The equation relates the additive order of an element in a FiberRing to a known sequence (Nat.fib) under a specific condition.,Requires m ≥ 2.,"Template: stable-value-map
+Verdict: True
+Reason: The equation relates the additive order of an element in a FiberRing to a known sequence (Nat.fib) under a specific condition.
+Caveat: Requires m ≥ 2."
+openai/gpt-oss-120b,A2,2,fr-021-A2,fr-021,characteristic,characteristic,characteristic,True,Conditional,True,True,False,True,False,The claim determines the characteristic (additive order of 1) as a Fibonacci number.,none,"Template: characteristic
+Verdict: True
+Reason: The claim determines the characteristic (additive order of 1) as a Fibonacci number.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-021-A2,fr-021,characteristic,characteristic,characteristic,True,Conditional,True,True,False,True,False,The claim determines the characteristic (additive order of 1) as a Fibonacci number.,none,"Template: characteristic
+Verdict: True
+Reason: The claim determines the characteristic (additive order of 1) as a Fibonacci number.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-021-A2,fr-021,characteristic,stable-value-map,stable-value-map,False,Conditional,True,True,False,True,False,The equation relates the additive order of an element in a FiberRing to a known sequence.,Requires m ≥ 2.,"Template: stable-value-map
+Verdict: True
+Reason: The equation relates the additive order of an element in a FiberRing to a known sequence.
+Caveat: Requires m ≥ 2."
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-021-A2,fr-021,characteristic,stable-value-map,stable-value-map,False,Conditional,True,True,False,True,False,The equation relates the additive order of an element in a FiberRing to a known sequence.,None,"Template: stable-value-map
+Verdict: True
+Reason: The equation relates the additive order of an element in a FiberRing to a known sequence.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-021-A2,fr-021,characteristic,stable-value-map,stable-value-map,False,Conditional,True,True,False,True,False,The equation relates the additive order of an element in a FiberRing to a known sequence.,None,"Template: stable-value-map
+Verdict: True
+Reason: The equation relates the additive order of an element in a FiberRing to a known sequence.
+Caveat: None"
+openai/gpt-oss-120b,A1,2,fr-022-A1,fr-022,rigidity,rigidity,rigidity,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim provides no details to evaluate its truth.,none,"Template: rigidity
+Verdict: Unknown-from-statement
+Reason: The claim provides no details to evaluate its truth.
+Caveat: none"
+openai/gpt-oss-120b,A1,3,fr-022-A1,fr-022,rigidity,rigidity,rigidity,True,True,Unknown-from-statement,Unknown-from-statement,True,True,True,The claim is only a title with no supporting details.,none,"Template: rigidity
+Verdict: Unknown-from-statement
+Reason: The claim is only a title with no supporting details.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,1,fr-022-A1,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,The concept of ring automorphism rigidity directly relates to the notion of rigidity in algebraic structures.,None,"Template: rigidity
+Verdict: True
+Reason: The concept of ring automorphism rigidity directly relates to the notion of rigidity in algebraic structures.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,2,fr-022-A1,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,The concept of ring automorphism rigidity directly relates to the notion of rigidity in algebraic structures.,None,"Template: rigidity
+Verdict: True
+Reason: The concept of ring automorphism rigidity directly relates to the notion of rigidity in algebraic structures.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,3,fr-022-A1,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,The concept of ring automorphism rigidity directly relates to the rigidity template.,None,"Template: rigidity
+Verdict: True
+Reason: The concept of ring automorphism rigidity directly relates to the rigidity template.
+Caveat: None"
+openai/gpt-oss-120b,A2,2,fr-022-A2,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,The claim asserts a rigidity property that every ring automorphism of Xₘ is the identity.,none,"Template: rigidity
+Verdict: True
+Reason: The claim asserts a rigidity property that every ring automorphism of Xₘ is the identity.
+Caveat: none"
+openai/gpt-oss-120b,A2,3,fr-022-A2,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,The claim asserts a rigidity property that every ring automorphism of Xₘ is the identity.,none,"Template: rigidity
+Verdict: True
+Reason: The claim asserts a rigidity property that every ring automorphism of Xₘ is the identity.
+Caveat: none"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,1,fr-022-A2,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,Lean proves every ring automorphism of X_m is pointwise the identity.,None,"Template: rigidity
+Verdict: True
+Reason: Lean proves every ring automorphism of X_m is pointwise the identity.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,2,fr-022-A2,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,Lean proves every ring automorphism of X_m is pointwise the identity.,None,"Template: rigidity
+Verdict: True
+Reason: Lean proves every ring automorphism of X_m is pointwise the identity.
+Caveat: None"
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,3,fr-022-A2,fr-022,rigidity,rigidity,rigidity,True,True,True,True,True,True,True,Lean proves every ring automorphism of X_m is pointwise the identity.,None,"Template: rigidity
+Verdict: True
+Reason: Lean proves every ring automorphism of X_m is pointwise the identity.
+Caveat: None"
