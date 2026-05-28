@@ -210,7 +210,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("outputs/israel_setA_predictions.jsonl"),
+        default=Path("experiments/israel_setA_predictions.jsonl"),
         help="Predictions JSONL output path.",
     )
     parser.add_argument(
