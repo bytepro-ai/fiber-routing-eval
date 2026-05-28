@@ -309,7 +309,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--predictions",
         type=Path,
-        default=Path("outputs/israel_setA_predictions.jsonl"),
+        default=Path("experiments/israel_setA_predictions.jsonl"),
         help="Predictions JSONL path.",
     )
     parser.add_argument(
@@ -321,13 +321,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--summary-output",
         type=Path,
-        default=Path("outputs/israel_setA_summary.json"),
+        default=Path("experiments/israel_setA_summary.json"),
         help="Summary JSON output path.",
     )
     parser.add_argument(
         "--row-csv-output",
         type=Path,
-        default=Path("outputs/israel_setA_row_scores.csv"),
+        default=Path("experiments/israel_setA_row_scores.csv"),
         help="Row-level CSV output path.",
     )
     return parser.parse_args()
