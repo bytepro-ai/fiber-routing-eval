@@ -1,6 +1,6 @@
 # FiberRing Routing Evaluation
 
-This repository contains a complete, runnable evaluation pipeline for the FiberRing Israel Set A routing benchmark. It tests whether models route formalized algebra statements to the intended proof-template family under two conditions:
+This repository contains a complete, runnable evaluation pipeline for the FiberRing Set A routing benchmark. It tests whether models route formalized algebra statements to the intended proof-template family under two conditions:
 
 - `A1`: blind structural routing from the equation/object only.
 - `A2`: cue-conditioned routing with the known Lean verdict included.
