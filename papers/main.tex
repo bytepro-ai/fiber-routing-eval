@@ -41,8 +41,9 @@ We present an empirical study of structural routing failure in large language
 models (LLMs) over a formally verified algebraic corpus. The task requires
 selecting the correct proof-mechanism label---from a fixed closed set of 13
 templates---for compact mathematical objects drawn from the FiberRing
-formalization in Lean~4~\cite{omega2026automath}, where every ground-truth
-label is independently verified by the Lean kernel.
+formalization in Lean~4~\cite{omega2026automath}, where each evaluation item
+is anchored to a Lean-verified artifact and assigned a proof-mechanism label
+from the corresponding named certificate family.
 
 Our central finding is a \textbf{mechanism-level routing ceiling}: under
 blind conditions (no structural cue), gpt-oss-120b achieves $80.3\%$
@@ -56,9 +57,10 @@ percentage points that we term \textbf{cue-induced routing uplift}.
 The dominant failure mode is a CRT\,$\to$\,ring-equivalence misroute:
 gpt-oss-120b misroutes 7 of 12 CRT items ($58.3\%$) in the blind condition,
 and zero in the cue-conditioned condition. We show this error has a direct
-correlate in the Lean corpus: every CRT row is implemented as a ring
-equivalence at the outer type level, with the CRT proof mechanism encoded
-one layer deeper in the certificate family. The model identifies the broad
+correlate in the Lean corpus: every CRT row is presented as a ring
+equivalence at the outer type level, while the finer mechanism is the coprime
+Fibonacci-modulus factorization followed by \texttt{ZMod.chineseRemainder}.
+The model identifies the broad
 algebraic type but fails to resolve the finer proof mechanism without the
 cue.
 
@@ -69,8 +71,17 @@ across both models:
   \item \texttt{prime{-}power{-}fiber{-}specialization} $\to$
         \texttt{ring{-}equivalence}
 \end{itemize}
-We show these correspond to genuine granularity boundaries in the
-Lean formalization rather than cue-induced routing errors.
+These errors identify two different boundary phenomena in the Lean
+formalization. The \texttt{stable{-}value{-}map}$\,{\to}\,$\texttt{ring{-}structure}
+error is a clean formal distinction with strong surface-language overlap:
+map-preservation rows mention addition, multiplication, zero, one, and ring
+homomorphism, but their proof role is transport through \texttt{toZMod}, not
+construction of the ring instance on $X_m$. The
+\texttt{prime{-}power{-}fiber{-}specialization}$\,{\to}\,$\texttt{ring{-}equivalence}
+error is a true granularity boundary: $X_4 \cong \mathbb{Z}/8\mathbb{Z}$ is
+broadly a ring equivalence, but the intended mechanism label is the direct
+prime-power specialization of the general stable-value equivalence, with no
+nontrivial coprime CRT split.
 
 A cross-model dissociation in Llama~3.3~70B is notable: verdict accuracy
 is identical in both conditions ($95.5\%$), while template accuracy
@@ -84,7 +95,7 @@ C\'azares~(2026)~\cite{sair2026} from equational reasoning to formal
 algebraic structures: LLMs act as structural classifiers routing over
 broad mathematical types, and fail specifically at the level of
 fine-grained proof mechanisms. The full evaluation pipeline, prompt pack,
-and results are released at
+and results are available in the project repository at
 \url{https://github.com/bytepro-ai/fiber-routing-eval}.
 \end{abstract}
 
