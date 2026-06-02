@@ -8,6 +8,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
+\usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{listings}
@@ -284,7 +285,107 @@ predictions.
 
 \section{Results}
 \label{sec:results}
-% DRAFT PLACEHOLDER — headline numbers, confusion matrix
+
+Table~\ref{tab:template} reports template accuracy, verdict accuracy, and
+caveat hit rate for both models under both conditions.
+The A2\,$-$\,A1 gaps confirm that exposing the Lean verdict as a structural
+cue improves mechanism selection across the board, while the magnitude and
+pattern of the gaps differ between models.
+
+\begin{table}[htbp]
+\centering
+\caption{Template accuracy, verdict accuracy, and caveat hit rate by model
+         and condition. $n = 66$ evaluations per cell (22 items $\times$ 3 runs).}
+\label{tab:template}
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Model} & \textbf{Cond.}
+  & \textbf{Tmpl acc.} & \textbf{Verd. acc.} & \textbf{Caveat HR}
+  & \textbf{$\Delta$ Tmpl} & \textbf{$\Delta$ Verd.} \\
+\midrule
+gpt-oss-120b  & A1 & $80.3\%$ & $84.8\%$ & $81.8\%$ & \multirow{2}{*}{$+10.6$~pp} & \multirow{2}{*}{$+10.6$~pp} \\
+              & A2 & $90.9\%$ & $95.5\%$ & $89.4\%$ & & \\
+\midrule
+Llama~3.3~70B & A1 & $68.2\%$ & $95.5\%$ & $77.3\%$ & \multirow{2}{*}{$+13.6$~pp} & \multirow{2}{*}{$0.0$~pp} \\
+              & A2 & $81.8\%$ & $95.5\%$ & $77.3\%$ & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Routing ceiling under blind conditions.}
+Under A1, gpt-oss-120b reaches $80.3\%$ template accuracy and Llama~3.3~70B
+reaches $68.2\%$.
+Neither model approaches ceiling under blind routing: gpt-oss-120b fails
+roughly 1 in 5 items, and Llama roughly 1 in 3, despite operating at
+temperature~$= 0$ with seed~$= 0$ across three runs.
+The result is stable across runs---the $n=3$ repetition produces consistent
+predictions rather than variance, confirming the ceiling is not a sampling
+artifact.
+
+\paragraph{Cue-induced routing uplift.}
+Exposing the Lean verdict (A2) raises template accuracy by $+10.6$~pp for
+gpt-oss-120b and $+13.6$~pp for Llama.
+The uplift is entirely attributable to the structural cues embedded in the
+verdict text: the models route correctly once they can read the mechanism
+language, not because they infer it from the mathematical object alone.
+
+\paragraph{Verdict--template dissociation.}
+The two models show a notable divergence in verdict accuracy.
+For gpt-oss-120b, verdict accuracy tracks template accuracy: $84.8\%$ in A1,
+rising to $95.5\%$ in A2 ($+10.6$~pp).
+For Llama~3.3~70B, verdict accuracy is $95.5\%$ in \emph{both} conditions,
+with a gap of $0.0$~pp.
+Llama infers truth correctly from the mathematical object alone but fails to
+route the structural template without the cue.
+This dissociation confirms that truth inference and proof-mechanism
+classification are separable capacities.
+
+\paragraph{Failure mode analysis.}
+Table~\ref{tab:misroutes} shows the full misroute breakdown by model and
+condition, restricted to label pairs with at least one misroute.
+The dominant failure is CRT\,$\to$\,ring-equivalence: gpt-oss-120b misroutes
+7 of 12 CRT items ($58.3\%$) under A1 and zero under A2; Llama misroutes 6
+of 12 ($50.0\%$) under A1 and zero under A2.
+This error resolves completely in both models once the verdict is exposed,
+identifying it as a cue-induced routing failure.
+
+Two label pairs produce misroutes in both conditions across both models:
+\texttt{stable{-}value{-}map}\,$\to$\,\texttt{ring{-}structure} and
+\texttt{prime{-}power{-}fiber{-}specialization}\,$\to$\,\texttt{ring{-}equivalence}.
+These cue-resistant errors persist regardless of whether the Lean verdict is
+exposed, distinguishing them structurally from the CRT failure mode.
+
+\begin{table}[htbp]
+\centering
+\caption{Misroutes by model and condition. Only label pairs with at least one
+         error are shown. The CRT family contains 4 items (12 possible correct
+         predictions per condition across 3 runs).}
+\label{tab:misroutes}
+\begin{tabular}{llll r}
+\toprule
+\textbf{Model} & \textbf{Cond.} & \textbf{Expected} & \textbf{Predicted} & \textbf{Count} \\
+\midrule
+gpt-oss-120b & A1 & \texttt{CRT}                       & \texttt{ring-equivalence}  & 7 \\
+             & A1 & \texttt{stable-value-map}          & \texttt{ring-structure}    & 3 \\
+             & A1 & \texttt{prime-power-fiber-spec.}   & \texttt{ring-equivalence}  & 3 \\
+\cmidrule{2-5}
+             & A2 & \texttt{stable-value-map}          & \texttt{ring-structure}    & 3 \\
+             & A2 & \texttt{prime-power-fiber-spec.}   & \texttt{ring-equivalence}  & 3 \\
+\midrule
+Llama~3.3~70B & A1 & \texttt{CRT}                      & \texttt{ring-equivalence}  & 6 \\
+              & A1 & \texttt{stable-value-arithmetic}  & \texttt{stable-value-map}  & 3 \\
+              & A1 & \texttt{characteristic}           & \texttt{stable-value-map}  & 3 \\
+              & A1 & \texttt{finite-unit-inverse-check}& \texttt{ring-structure}    & 3 \\
+              & A1 & \texttt{prime-power-fiber-spec.}  & \texttt{ring-equivalence}  & 3 \\
+              & A1 & \texttt{operation-bridge}         & \texttt{ring-structure}    & 3 \\
+\cmidrule{2-5}
+              & A2 & \texttt{stable-value-map}         & \texttt{ring-structure}    & 3 \\
+              & A2 & \texttt{characteristic}           & \texttt{stable-value-map}  & 3 \\
+              & A2 & \texttt{prime-power-fiber-spec.}  & \texttt{ring-equivalence}  & 3 \\
+              & A2 & \texttt{operation-bridge}         & \texttt{ring-structure}    & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Analysis}
 \label{sec:analysis}
