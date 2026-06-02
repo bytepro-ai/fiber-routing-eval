@@ -102,7 +102,59 @@ and results are available in the project repository at
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Introduction}
 \label{sec:intro}
-% DRAFT PLACEHOLDER — to be written after Wenlin approves abstract
+
+Large language models (LLMs) have demonstrated substantial capability on
+formal mathematical tasks, yet a persistent gap remains between what a
+model can produce under optimal conditions and what it reliably produces
+across problem distributions.
+C\'azares~\citep{sair2026} introduced the \emph{router hypothesis} to
+characterise this gap: frontier LLMs do not fail formal reasoning tasks
+because they lack the relevant sub-skills, but because they fail to
+consistently \emph{route} a given problem to the correct structural
+interpretation template.
+Empirical evidence from the SAIR competition benchmark showed a
+\emph{single-prompt ceiling}---an empirical saturation region at
+approximately 60--79\% for gpt-oss-120b on hard equational reasoning
+tasks---and documented that iterative prompt recalibration amplifies
+distributional collapse rather than correcting it.
+
+The router hypothesis raises a natural question: is the ceiling a property
+of the equational reasoning domain, or does it reflect something more
+fundamental about how LLMs classify formal mathematical objects?
+Formal theorem corpora offer a stronger test than competition benchmarks
+because every ground-truth label is anchored to a machine-verified proof
+artifact rather than a human annotation.
+If routing failure persists on Lean-verified objects---where the structural
+template is unambiguously determined by the proof certificate---the evidence
+for the hypothesis strengthens considerably.
+
+We address this question using the FiberRing corpus, a subset of the
+Automath/Omega Lean~4 formalization~\citep{omega2026automath} derived from
+the single equation $x^2 = x + 1$.
+The corpus provides 22 clean-anchor items spanning 13 distinct
+proof-mechanism families, each anchored to a named Lean declaration.
+We design a two-condition evaluation---blind routing (A1) and
+verdict-conditioned routing (A2)---and measure template accuracy,
+verdict accuracy, caveat hit rate, and the A2\,$-$\,A1 gap across two
+models and three runs each (264 total evaluations).
+
+\paragraph{Contributions.}
+\begin{enumerate}
+  \item We document a \textbf{mechanism-level routing ceiling} at $80.3\%$
+        (gpt-oss-120b, blind condition) on Lean-verified algebraic objects,
+        extending the empirical ceiling reported in SAIR to a formally
+        verified domain with machine-checked ground truth.
+
+  \item We identify and explain the \textbf{dominant failure mode}:
+        a CRT\,$\to$\,ring-equivalence misroute that resolves completely
+        under verdict-conditioned routing, with a direct structural correlate
+        in the Lean formalization.
+
+  \item We distinguish \textbf{cue-induced} from \textbf{cue-resistant}
+        routing errors, showing that two persistent failure modes correspond
+        to genuine granularity boundaries in the proof-mechanism label set
+        rather than failures correctable by additional structural cues.
+\end{enumerate}
 
 \section{Related Work}
 \label{sec:related}
