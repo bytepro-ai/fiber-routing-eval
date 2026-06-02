@@ -160,29 +160,46 @@ models and three runs each (264 total evaluations).
 \section{Related Work}
 \label{sec:related}
 
-This note builds on recent empirical work treating LLM mathematical
-reasoning as a routing problem rather than a monolithic proof-generation
-problem. C\'azares~\citep{sair2026} argues that frontier models often
-possess the local algebraic and symbolic sub-skills needed for a task, but
-fail to select the correct structural interpretation under distributional
-pressure. The reported single-prompt ceiling in SAIR is therefore not
-primarily a limit on algebraic manipulation; it is a limit on stable
-problem classification under a fixed prompt. Our study transfers this
-claim from contest-style equational reasoning to a corpus whose objects
-are tied to proof certificates rather than external scoring labels.
+This note builds on three lines of work: empirical studies of LLM
+mathematical reasoning, LLM-based formal theorem proving, and the
+structural-routing account of reasoning failure.
 
-Formal theorem-proving corpora offer a complementary evaluation regime.
-Lean artifacts expose a separation between statement truth, proof
-construction, and the named mechanisms by which a proof is organized.
-The Automath/Omega FiberRing formalization~\citep{omega2026automath}
-is especially useful for this purpose because many statements share
+\paragraph{LLM mathematical reasoning benchmarks.}
+Benchmarks such as MATH~\citep{hendrycks2021math} established that
+competition-level mathematical reasoning is a discriminating test for
+LLMs, and subsequent work documented steady benchmark saturation as
+models scaled. These benchmarks score final-answer correctness on
+natural-language problems. Our setting differs in two ways: ground truth
+is anchored to machine-verified Lean artifacts rather than answer keys,
+and the task is mechanism classification rather than answer generation.
+
+\paragraph{LLM-based formal theorem proving.}
+A rapidly growing body of work pairs LLMs with the Lean~4 proof
+assistant~\citep{demoura2021lean4} to generate machine-checked proofs.
+AlphaProof reached silver-medal performance on International Mathematical
+Olympiad problems formalized in Lean~\citep{deepmind2024alphaproof}, and
+systems such as DeepSeek-Prover-V2 combine chain-of-thought reasoning with
+formal verification to synthesize proofs~\citep{deepseekprover2025}.
+This work targets \emph{proof construction}: producing Lean code that the
+kernel accepts. Our benchmark is deliberately upstream of proof
+construction~---~we do not ask the model to prove anything, only to
+identify which proof-mechanism family an already-verified statement
+belongs to. This isolates the routing step from the generation step.
+
+\paragraph{The router hypothesis.}
+C\'azares~\citep{sair2026} argues that frontier models often possess the
+local algebraic and symbolic sub-skills needed for a task but fail to
+select the correct structural interpretation under distributional
+pressure, producing a single-prompt ceiling on hard equational reasoning.
+The Automath/Omega FiberRing formalization~\citep{omega2026automath} is
+well suited to test this claim directly, because many statements share
 surface algebraic vocabulary while depending on different certificate
-families: ring instances, ring equivalences, CRT decompositions, stable
-value maps, finite calculations, and characteristic arguments. This makes
-it possible to test mechanism selection directly. The present benchmark is
-therefore closer to proof-mechanism classification than to theorem proving:
-the model is not asked to construct Lean code, but to identify which
-Lean-verified mechanism family an already formalized statement belongs to.
+families: ring instances, ring equivalences, CRT decompositions,
+stable-value maps, finite calculations, and characteristic arguments.
+The present benchmark transfers the router hypothesis from contest-style
+equational reasoning to a corpus whose objects are tied to proof
+certificates rather than external scoring labels, and tests mechanism
+selection directly.
 
 \section{Dataset}
 \label{sec:dataset}
