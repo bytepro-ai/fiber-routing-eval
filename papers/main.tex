@@ -233,7 +233,54 @@ Reference fields & Template, verdict, caveat keywords \\
 
 \section{Methodology}
 \label{sec:methodology}
-% DRAFT PLACEHOLDER — A1/A2 conditions, label set, scoring protocol
+
+We evaluate routing as a constrained classification task. For each prompt,
+the model must return four fields: a template label from the closed
+13-label set, a verdict, a one-sentence reason, and a short caveat. The
+pipeline sends the rendered prompt pack to Together AI through the
+OpenAI-compatible chat-completions endpoint. Each prompt is run three times
+per model at temperature $0$ and seed $0$, yielding 264 evaluations
+($22$ items $\times$ $2$ conditions $\times$ $2$ models $\times$ $3$ runs).
+The total API cost for the run was $0.05$ USD.
+
+The two conditions isolate different kinds of routing information. A1 is
+blind structural routing: the model sees only the item identifier, the
+equation or object, and the allowed label set. A2 is verdict-conditioned
+routing: the model sees the same information plus the known Lean verdict
+or certificate cue. The primary comparison is the A2\,$-$\,A1 gap, which
+measures how much the verdict cue improves mechanism selection for the
+same item distribution.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{ll}
+\toprule
+Parameter & Value \\
+\midrule
+Provider & Together AI \\
+Endpoint & OpenAI-compatible chat completions \\
+Models & gpt-oss-120b; Llama~3.3~70B Instruct Turbo \\
+Runs & 3 per prompt per model \\
+Temperature / seed & $0$ / $0$ \\
+Reasoning setting & low for gpt-oss-120b; disabled for Llama \\
+Total evaluations & 264 \\
+Total cost & $0.05$ USD \\
+\bottomrule
+\end{tabular}
+\caption{Evaluation configuration.}
+\label{tab:method-config}
+\end{table}
+
+The evaluator reports three metrics by model and condition. Template
+accuracy is exact after canonicalizing case, punctuation, spacing,
+underscores, and hyphenation. Verdict accuracy normalizes common variants
+of true, false, conditional, and unknown verdicts; in A1,
+\texttt{Unknown{-}from{-}statement} is accepted when the protocol marks it
+as admissible, since the blind prompt does not expose the Lean verdict.
+Caveat hit rate is a secondary keyword measure over the model's caveat,
+reason, and raw response fields. Confusion matrices are computed over the
+13 allowed labels plus \texttt{\_\_other\_\_} for invalid or blank
+predictions.
 
 \section{Results}
 \label{sec:results}
