@@ -393,7 +393,98 @@ Llama~3.3~70B & A1 & \texttt{CRT}                      & \texttt{ring-equivalenc
 
 \section{Analysis}
 \label{sec:analysis}
-% Wenlin's Section 6 mathematical interpretation goes here
+
+The Set~A failures have a clean mathematical reading in the Lean corpus.
+They are not random label noise; they occur exactly where the corpus has a
+hierarchy of mechanisms rather than a flat set of unrelated templates.
+
+\paragraph{CRT to ring-equivalence.}
+The CRT\,$\to$\,ring-equivalence misroute has a direct correlate in the Lean
+formalization.
+In \texttt{FiberRing.lean}, the basic object is first identified with a
+cyclic ring by the stable-value equivalence
+\texttt{stableValueRingEquiv (m) : X m $\cong$+* ZMod (Nat.fib (m + 2))}.
+The CRT decomposition is then implemented by composing this base ring
+equivalence with the Chinese remainder equivalence:
+\texttt{crtDecomposition (m) (p q) : X m $\cong$+* ZMod p $\times$ ZMod q},
+constructed as
+\texttt{(stableValueRingEquiv m).trans (hpq $\triangleright$ ZMod.chineseRemainder hcop)}.
+So the model's blind classification as \texttt{ring-equivalence} is
+mathematically understandable: every CRT row is indeed presented as a ring
+equivalence at the outer type level.
+The corpus label \texttt{CRT} is more specific---it asks the router to
+identify the internal proof mechanism: a coprime factor split of the
+Fibonacci modulus followed by the Chinese remainder theorem.
+This explains why exposing the Lean verdict removes the error: the verdict
+text contains language such as ``CRT decomposition'', ``$F_8 = 21 = 3
+\times 7$'', or ``coprime factor split'', which explicitly selects the finer
+mechanism.
+Without that cue, the surface object $X_6 \cong{+}{*}\ \mathrm{ZMod}\ 3
+\times \mathrm{ZMod}\ 7$ looks like a generic equivalence between rings;
+with the cue, the model routes to the factorization mechanism.
+This is a mechanism-level routing failure, not a truth-level failure: the
+model recognizes the broad mathematical type but misses the specific
+certificate family.
+
+\paragraph{Persistent errors.}
+The cue-resistant errors also correspond to real boundary pressure in the
+corpus, but they are not all equally ambiguous.
+
+The \texttt{stable{-}value{-}map}\,$\to$\,\texttt{ring{-}structure} pair is
+formally distinct.
+The \texttt{ring-structure} rows concern the existence of the commutative
+ring instance on $X_m$: addition, multiplication, zero, one, negation, and
+the ring laws.
+The \texttt{stable-value-map} rows concern the map
+\texttt{toZMod : X m -> ZMod (Nat.fib (m + 2))} and its preservation lemmas
+(\texttt{toZMod\_add}, \texttt{toZMod\_mul}, \texttt{toZMod\_zero},
+\texttt{toZMod\_one}, \texttt{stableValueRingHom}).
+This boundary is difficult for a blind router because the map rows mention
+preservation of ring operations, so their surface language contains
+``addition'', ``multiplication'', ``zero'', ``one'', and ``ring
+homomorphism'' signals.
+But the proof role is different: a \texttt{stable-value-map} row is about
+transport through a specific semantic map, not about the ring instance
+itself.
+This is a clean formal distinction with a predictable surface-language
+confound.
+
+The \texttt{prime{-}power{-}fiber{-}specialization}\,$\to$\,\texttt{ring{-}equivalence}
+pair is more genuinely adjacent.
+The row $X_4 \cong \mathrm{ZMod}\ 8$ is implemented by the same stable-value
+ring equivalence mechanism (\texttt{X4\_iso := stableValueRingEquiv 4}).
+Therefore \texttt{ring-equivalence} is not mathematically false as a broad
+classification.
+The finer label \texttt{prime-power-fiber-specialization} says more: this is
+the direct specialization of the general $X_m \cong \mathrm{ZMod}(F_{m+2})$
+equivalence to a prime-power modulus, with no nontrivial coprime CRT split.
+This persistent error indicates a true granularity boundary in the label
+set: if the task asks for broad type, \texttt{ring-equivalence} is
+acceptable; if the task asks for certificate family,
+\texttt{prime-power-fiber-specialization} is the intended label.
+
+\paragraph{The Llama verdict/template dissociation.}
+The Llama result is expected from a formal-mathematics perspective.
+Truth inference and structural classification are separable capacities.
+In the Lean corpus, the truth of a row can often be determined by
+recognizing that it matches a familiar algebraic fact: a field instance, a
+zero product modulo a composite, a unit identity, a ring equivalence, or a
+characteristic statement.
+But the template label asks a different question: which proof mechanism or
+certificate family is responsible for the fact?
+A concrete inverse identity inside $X_5$ is true because $X_5$ is in a field
+phase, but the row-level mechanism is a finite unit check, not the field
+phase itself; the automorphism rigidity row is true after conjugating an
+automorphism of $X_m$ through \texttt{stableValueRingEquiv} and using
+rigidity of \texttt{ZMod}, but its template is \texttt{rigidity}, not simply
+equivalence.
+This is exactly the separation Set~A is designed to expose: the model may
+infer the truth value from a familiar mathematical object while still
+choosing the wrong mechanism label.
+The Lean formalization makes the distinction explicit because the proof
+artifacts are named at different layers: instance construction, homomorphism
+preservation, equivalence construction, CRT decomposition, field-phase
+transport, finite arithmetic checks, and rigidity.
 
 \section{Discussion}
 \label{sec:discussion}
