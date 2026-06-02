@@ -488,7 +488,49 @@ transport, finite arithmetic checks, and rigidity.
 
 \section{Discussion}
 \label{sec:discussion}
-% DRAFT PLACEHOLDER — router hypothesis extension, limitations
+
+Our results extend the router hypothesis~\citep{sair2026} from equational
+reasoning to formally verified algebraic structures, and sharpen it in one
+respect: the failure is specifically a \emph{mechanism-level} routing
+failure.
+Both models reliably identify the broad mathematical type of an object---a
+ring equivalence, a field instance, a characteristic statement---while
+failing to resolve the finer proof-mechanism family that the Lean
+certificate records.
+The dominant CRT\,$\to$\,ring-equivalence error is the clearest case: the
+models route to the correct outer type and miss the coprime-factorization
+mechanism one layer down.
+
+The A1/A2 design lets us separate two kinds of routing failure that would
+otherwise be conflated.
+Cue-induced failures, such as the CRT misroute, resolve completely once the
+verdict exposes the mechanism language; they reflect underspecification in
+the object text rather than a stable limit on the model.
+Cue-resistant failures persist regardless of the verdict and isolate genuine
+structure: one is a clean formal distinction obscured by surface-language
+overlap,
+\begin{center}
+\texttt{stable-value-map} vs.\ \texttt{ring-structure},
+\end{center}
+the other a true label-granularity boundary,
+\begin{center}
+\texttt{prime-power-fiber-specialization} vs.\ \texttt{ring-equivalence}.
+\end{center}
+This distinction is the practical contribution of the two-condition design:
+the confusion matrix, not aggregate accuracy, identifies where a proof-search
+agent would need explicit mechanism metadata rather than more reasoning.
+
+\paragraph{Limitations.}
+The benchmark is small: 22 clean-anchor items over a single formalization
+derived from one equation.
+The evaluation covers two models under reasoning-suppressed conditions, and
+the headline numbers are point estimates over three deterministic runs rather
+than confidence intervals over a sampled distribution.
+The cue-resistant findings rest on consistent but low per-cell counts.
+A larger corpus---including the boundary-ambiguous and cross-domain items
+reserved for Set~B---is required to establish whether the mechanism-level
+ceiling and the two cue-resistant boundaries generalize beyond the FiberRing
+subset.
 
 \section{Conclusion}
 \label{sec:conclusion}
