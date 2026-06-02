@@ -534,7 +534,26 @@ subset.
 
 \section{Conclusion}
 \label{sec:conclusion}
-% DRAFT PLACEHOLDER
+
+We evaluated structural routing in two LLMs over 22 Lean-verified FiberRing
+items under blind (A1) and verdict-conditioned (A2) routing.
+Under blind conditions, template accuracy reaches a ceiling of $80.3\%$
+(gpt-oss-120b) and $68.2\%$ (Llama~3.3~70B); exposing the Lean verdict lifts
+both by $10.6$ and $13.6$~pp respectively.
+The dominant failure is a CRT\,$\to$\,ring-equivalence misroute that resolves
+completely under the verdict cue, while two label pairs misroute regardless
+of the cue.
+A verdict--template dissociation in Llama confirms that truth inference and
+proof-mechanism classification are separable capacities.
+
+These results extend the router hypothesis to formally verified algebraic
+structures and locate the failure precisely: LLMs route correctly over broad
+mathematical types but fail at the level of fine-grained proof mechanisms.
+Because every label is anchored to a machine-checked certificate, the
+confusion matrix identifies exactly where a proof-search agent would require
+explicit mechanism metadata.
+The full pipeline, prompt pack, and results are available in the project
+repository.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \bibliographystyle{plainnat}
