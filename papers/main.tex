@@ -158,7 +158,30 @@ models and three runs each (264 total evaluations).
 
 \section{Related Work}
 \label{sec:related}
-% DRAFT PLACEHOLDER
+
+This note builds on recent empirical work treating LLM mathematical
+reasoning as a routing problem rather than a monolithic proof-generation
+problem. C\'azares~\citep{sair2026} argues that frontier models often
+possess the local algebraic and symbolic sub-skills needed for a task, but
+fail to select the correct structural interpretation under distributional
+pressure. The reported single-prompt ceiling in SAIR is therefore not
+primarily a limit on algebraic manipulation; it is a limit on stable
+problem classification under a fixed prompt. Our study transfers this
+claim from contest-style equational reasoning to a corpus whose objects
+are tied to proof certificates rather than external scoring labels.
+
+Formal theorem-proving corpora offer a complementary evaluation regime.
+Lean artifacts expose a separation between statement truth, proof
+construction, and the named mechanisms by which a proof is organized.
+The Automath/Omega FiberRing formalization~\citep{omega2026automath}
+is especially useful for this purpose because many statements share
+surface algebraic vocabulary while depending on different certificate
+families: ring instances, ring equivalences, CRT decompositions, stable
+value maps, finite calculations, and characteristic arguments. This makes
+it possible to test mechanism selection directly. The present benchmark is
+therefore closer to proof-mechanism classification than to theorem proving:
+the model is not asked to construct Lean code, but to identify which
+Lean-verified mechanism family an already formalized statement belongs to.
 
 \section{Dataset}
 \label{sec:dataset}
