@@ -185,7 +185,51 @@ Lean-verified mechanism family an already formalized statement belongs to.
 
 \section{Dataset}
 \label{sec:dataset}
-% DRAFT PLACEHOLDER — FiberRing corpus, Set A design, 22-item schema
+
+FiberRing Set A is a compact benchmark extracted from the
+Automath/Omega Lean~4 formalization of Fibonacci-modulus algebraic
+structures~\citep{omega2026automath}. The set contains 22 clean-anchor
+items. Each item is a short algebraic statement, object, or theorem-facing
+claim whose intended proof mechanism is anchored to a named Lean artifact.
+The benchmark does not ask models to prove the statements or emit Lean
+code. It asks for the mechanism label that most directly explains the
+formal certificate family behind the statement.
+
+The label space is closed and contains 13 proof-mechanism families covering
+ring construction, operation bridges, stable-value transport, ring
+equivalence, field-phase reasoning, CRT decomposition, prime-power
+specialization, finite checks, characteristic arguments, rigidity, and
+stable-value arithmetic. The labels are intentionally mechanism-level
+rather than theorem-topic labels: for example, a statement may be broadly
+about a ring equivalence while the intended route is a CRT decomposition or
+a prime-power specialization of a general stable-value equivalence.
+
+Each item is rendered under two conditions. In A1, the prompt contains the
+item identifier, the equation or object, and the allowed label set. In A2,
+the same prompt additionally includes the known Lean verdict. This yields
+44 prompts total. The protocol file stores the expected template, expected
+verdict, caveat keywords, and item-level metadata; the prompt pack stores
+the exact text sent to the model. Table~\ref{tab:dataset-summary}
+summarizes the resulting evaluation set.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{ll}
+\toprule
+Property & Value \\
+\midrule
+Corpus & FiberRing Set A \\
+Formal source & Automath/Omega Lean~4 FiberRing artifacts \\
+Clean-anchor items & 22 \\
+Conditions & A1 blind routing; A2 verdict-conditioned routing \\
+Rendered prompts & 44 \\
+Allowed labels & 13 proof-mechanism families \\
+Reference fields & Template, verdict, caveat keywords \\
+\bottomrule
+\end{tabular}
+\caption{Dataset summary for FiberRing Set A.}
+\label{tab:dataset-summary}
+\end{table}
 
 \section{Methodology}
 \label{sec:methodology}
