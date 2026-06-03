@@ -9,3 +9,7 @@ papers/*.toc
 papers/*.fls
 papers/*.fdb_latexmk
 .env
+FiberRing/
+*.pyc
+__pycache__/
+.git-filter-repo/
