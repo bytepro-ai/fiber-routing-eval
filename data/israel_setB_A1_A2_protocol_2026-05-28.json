@@ -1,0 +1,110 @@
+{
+  "protocol_id": "fiberring_setB_A1_A2_2026-05-28",
+  "purpose": "Matched blind-routing and verdict-conditioned routing evaluation over a small Set B extension: two FiberRing/POM bridge rows plus selected POM/CollisionKernel rows. The goal is to test whether Set A's mechanism-routing pattern persists when the objects move from FiberRing algebra into hidden-bit, CRT-budget, and collision-kernel certificates.",
+  "conditions": {
+    "A1_blind_routing_baseline": {
+      "input_fields": ["equation_or_object"],
+      "withheld_from_prompt": ["lean_verdict", "audit_pointer"],
+      "primary_score": "exact_template_match",
+      "secondary_scores": ["verdict_accuracy_when_determinable", "caveat_hit_rate"],
+      "prompt_template": "You are given one mathematical object or statement from the FiberRing/POM corpus.\n\nStatement:\n{equation_or_object}\n\nTask:\nChoose the structural template that best explains the statement. Answer in exactly this format:\n\nVerdict: True / False / Conditional / Unknown-from-statement\nTemplate: one label from the allowed template list\nReason: 2-4 sentences explaining why the template applies\nCaveat: any necessary hypothesis, index shift, modulus, finite-state boundary, or reconstruction condition\n\nDo not cite Lean code. Do not assume the Lean verdict is given. If the statement alone does not determine a truth verdict, use `Unknown-from-statement` for Verdict while still choosing the most plausible structural template."
+    },
+    "A2_verdict_conditioned_routing": {
+      "input_fields": ["equation_or_object", "lean_verdict"],
+      "withheld_from_prompt": ["audit_pointer"],
+      "primary_score": "exact_template_match",
+      "secondary_scores": ["verdict_accuracy", "caveat_hit_rate"],
+      "prompt_template": "You are given one Lean-verified mathematical anchor from the FiberRing/POM corpus.\n\nStatement:\n{equation_or_object}\n\nKnown Lean verdict:\n{lean_verdict}\n\nTask:\nChoose the structural template that explains the verdict. Answer in exactly this format:\n\nVerdict: True / False / Conditional\nTemplate: one label from the allowed template list\nReason: 2-4 sentences explaining why the template applies\nCaveat: any necessary hypothesis, index shift, modulus, finite-state boundary, or reconstruction condition\n\nDo not cite Lean code. Do not introduce facts beyond the statement and verdict. If the statement is conditional, preserve the condition instead of turning it into an unconditional claim."
+    }
+  },
+  "allowed_template_labels": [
+    "ring-structure",
+    "operation-bridge",
+    "stable-value-map",
+    "ring-equivalence",
+    "affine-transfer",
+    "field-phase",
+    "CRT",
+    "prime-power-fiber-specialization",
+    "finite-zero-divisor-check",
+    "finite-unit-inverse-check",
+    "characteristic",
+    "rigidity",
+    "stable-value-arithmetic",
+    "hidden-bit-overflow-decomposition",
+    "probabilistic-CRT-reconstruction",
+    "collision-kernel-existence",
+    "collision-CK-classification",
+    "bowen-franks-SNF-certificate",
+    "CRT-budget-bound"
+  ],
+  "evaluation_notes": {
+    "template_match": "Canonicalize case, punctuation, and hyphen/underscore variants before exact matching.",
+    "A1_verdict": "In A1, Unknown-from-statement is acceptable when the object text does not determine the Lean truth value.",
+    "A2_verdict": "In A2, the verdict should match the exposed Lean verdict.",
+    "interpretation": "A1 estimates blind structural routing. A2 estimates cue-conditioned routing. The A2-A1 gap estimates reliance on explicit structural cues. Set B adds cross-module mechanisms where generic labels such as CRT, kernel, and equivalence are likely to compete with more specific certificate-family labels."
+  },
+  "rows": [
+    {
+      "item_id": "fr-023",
+      "equation_or_object": "For every word w, there is a unique b : Fin 2 such that weight(w) = stableValue(Fold w) + b * Nat.fib(m + 2).",
+      "lean_verdict": "Lean proves the one-hidden-bit decomposition of a word into its stable folded value plus a unique overflow bit.",
+      "expected_template": "hidden-bit-overflow-decomposition",
+      "bucket": "Set B / FiberRing-POM bridge",
+      "witness_family": "Fold stable value plus hidden bit",
+      "audit_pointer": "lean4/Omega/POM/OneBit.lean:7",
+      "ambiguity_notes": "This is not a generic stable-value arithmetic row; the mechanism is unique decomposition into a visible stable value plus one hidden overflow bit."
+    },
+    {
+      "item_id": "fr-024",
+      "equation_or_object": "A bad-event mass is bounded by epsilon, and outside the bad event the CRT reconstruction satisfies reconstruct(Y % P) = Y.",
+      "lean_verdict": "Lean packages the RCRT epsilon certificate: tail mass is bounded by epsilon and exact reconstruction holds on the good event.",
+      "expected_template": "probabilistic-CRT-reconstruction",
+      "bucket": "Set B / POM CRT budget",
+      "witness_family": "RCRT epsilon sound rewrite",
+      "audit_pointer": "lean4/Omega/POM/RCRTEpsilon.lean:22",
+      "ambiguity_notes": "This is related to CRT but is not a plain coprime product decomposition; the key mechanism is conditional exact reconstruction under a probabilistic bad-event budget."
+    },
+    {
+      "item_id": "fr-025",
+      "equation_or_object": "Given a finite-state matrix A and vectors u,v realizing the q-collision kernel with trim(A), there exist A',u',v' realizing the same q-collision kernel with trim(A').",
+      "lean_verdict": "Lean proves a publication-facing finite-state collision-kernel existence wrapper.",
+      "expected_template": "collision-kernel-existence",
+      "bucket": "Set B / CollisionKernel",
+      "witness_family": "finite-state collision-kernel realization",
+      "audit_pointer": "lean4/Omega/POM/CollisionKernelPublication.lean:9",
+      "ambiguity_notes": "This is an existence/packaging certificate for a finite-state kernel, not a spectral classification or a Bowen-Franks invariant."
+    },
+    {
+      "item_id": "fr-026",
+      "equation_or_object": "For q = 2,3,4 the collision CK package records Cuntz parameters, Bowen-Franks determinant sizes, an A3 unit-class witness, and an A4(t) primitive adjugate-vector gcd certificate.",
+      "lean_verdict": "Lean proves the low-rank collision-CK classification package for q=2,3,4.",
+      "expected_template": "collision-CK-classification",
+      "bucket": "Set B / CollisionKernel",
+      "witness_family": "low-rank collision CK classification",
+      "audit_pointer": "lean4/Omega/POM/CollisionCKClassificationQ234.lean:43",
+      "ambiguity_notes": "This row combines several finite invariants into a classification package; it should not be reduced to generic collision-kernel existence."
+    },
+    {
+      "item_id": "fr-027",
+      "equation_or_object": "For q = 2,3,4, explicit Smith normal forms give Bowen-Franks moduli 1, 3, and 8, with the corresponding BF groups modeled by the appropriate ZMod groups.",
+      "lean_verdict": "Lean proves the determinant, Smith normal form, and Bowen-Franks group package for the q=2,3,4 collision kernels.",
+      "expected_template": "bowen-franks-SNF-certificate",
+      "bucket": "Set B / CollisionKernel",
+      "witness_family": "Bowen-Franks / Smith normal form certificate",
+      "audit_pointer": "lean4/Omega/POM/CollisionBfSnfQ234.lean:71",
+      "ambiguity_notes": "This is an invariant-computation certificate, not merely a kernel-existence or flow-equivalence row."
+    },
+    {
+      "item_id": "fr-028",
+      "equation_or_object": "If the CRT modulus product P satisfies P > 2B and B >= m+1, then the prime budget is large enough for exact residue reconstruction on the bounded interval.",
+      "lean_verdict": "Lean proves the CRT spatialization prime-budget lower-bound package.",
+      "expected_template": "CRT-budget-bound",
+      "bucket": "Set B / POM CRT budget",
+      "witness_family": "CRT product lower bound for exact reconstruction",
+      "audit_pointer": "lean4/Omega/POM/CRTSpatializationPrimeBudget.lean:30",
+      "ambiguity_notes": "This row uses CRT language, but the mechanism is a quantitative product bound for reconstruction, not a ring-product decomposition."
+    }
+  ]
+}
+
