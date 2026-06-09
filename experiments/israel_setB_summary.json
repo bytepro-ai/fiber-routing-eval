@@ -13,7 +13,13 @@
     "finite-unit-inverse-check",
     "characteristic",
     "rigidity",
-    "stable-value-arithmetic"
+    "stable-value-arithmetic",
+    "hidden-bit-overflow-decomposition",
+    "probabilistic-CRT-reconstruction",
+    "collision-kernel-existence",
+    "collision-CK-classification",
+    "bowen-franks-SNF-certificate",
+    "CRT-budget-bound"
   ],
   "by_model_condition": {
     "openai/gpt-oss-120b": {
@@ -41,6 +47,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "operation-bridge": {
@@ -57,6 +69,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-map": {
@@ -73,6 +91,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "ring-equivalence": {
@@ -89,6 +113,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "affine-transfer": {
@@ -105,6 +135,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "field-phase": {
@@ -121,6 +157,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "CRT": {
@@ -137,6 +179,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "prime-power-fiber-specialization": {
@@ -153,6 +201,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-zero-divisor-check": {
@@ -169,6 +223,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-unit-inverse-check": {
@@ -185,6 +245,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "characteristic": {
@@ -201,6 +267,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "rigidity": {
@@ -217,6 +289,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-arithmetic": {
@@ -233,6 +311,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "hidden-bit-overflow-decomposition": {
@@ -249,7 +333,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 3,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "probabilistic-CRT-reconstruction": {
             "ring-structure": 0,
@@ -265,7 +355,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 3,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "collision-kernel-existence": {
             "ring-structure": 0,
@@ -281,7 +377,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 3,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "collision-CK-classification": {
             "ring-structure": 0,
@@ -297,7 +399,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 3,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "bowen-franks-SNF-certificate": {
             "ring-structure": 0,
@@ -313,7 +421,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 3,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "CRT-budget-bound": {
             "ring-structure": 0,
@@ -329,7 +443,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 3,
+            "__other__": 0
           }
         }
       },
@@ -357,6 +477,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "operation-bridge": {
@@ -373,6 +499,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-map": {
@@ -389,6 +521,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "ring-equivalence": {
@@ -405,6 +543,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "affine-transfer": {
@@ -421,6 +565,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "field-phase": {
@@ -437,6 +587,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "CRT": {
@@ -453,6 +609,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "prime-power-fiber-specialization": {
@@ -469,6 +631,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-zero-divisor-check": {
@@ -485,6 +653,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-unit-inverse-check": {
@@ -501,6 +675,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "characteristic": {
@@ -517,6 +697,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "rigidity": {
@@ -533,6 +719,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-arithmetic": {
@@ -549,6 +741,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "hidden-bit-overflow-decomposition": {
@@ -565,7 +763,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 3,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "probabilistic-CRT-reconstruction": {
             "ring-structure": 0,
@@ -581,7 +785,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 3,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "collision-kernel-existence": {
             "ring-structure": 0,
@@ -597,7 +807,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 3,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "collision-CK-classification": {
             "ring-structure": 0,
@@ -613,7 +829,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 3,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "bowen-franks-SNF-certificate": {
             "ring-structure": 0,
@@ -629,7 +851,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 3,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "CRT-budget-bound": {
             "ring-structure": 0,
@@ -645,7 +873,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 3,
+            "__other__": 0
           }
         }
       }
@@ -675,6 +909,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "operation-bridge": {
@@ -691,6 +931,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-map": {
@@ -707,6 +953,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "ring-equivalence": {
@@ -723,6 +975,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "affine-transfer": {
@@ -739,6 +997,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "field-phase": {
@@ -755,6 +1019,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "CRT": {
@@ -771,6 +1041,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "prime-power-fiber-specialization": {
@@ -787,6 +1063,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-zero-divisor-check": {
@@ -803,6 +1085,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-unit-inverse-check": {
@@ -819,6 +1107,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "characteristic": {
@@ -835,6 +1129,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "rigidity": {
@@ -851,6 +1151,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-arithmetic": {
@@ -867,6 +1173,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "hidden-bit-overflow-decomposition": {
@@ -883,6 +1195,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "probabilistic-CRT-reconstruction": {
@@ -899,6 +1217,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "collision-kernel-existence": {
@@ -915,7 +1239,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 3,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "collision-CK-classification": {
             "ring-structure": 0,
@@ -931,7 +1261,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 3,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "bowen-franks-SNF-certificate": {
             "ring-structure": 0,
@@ -947,7 +1283,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 3,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "CRT-budget-bound": {
             "ring-structure": 0,
@@ -963,6 +1305,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           }
         }
@@ -991,6 +1339,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "operation-bridge": {
@@ -1007,6 +1361,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-map": {
@@ -1023,6 +1383,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "ring-equivalence": {
@@ -1039,6 +1405,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "affine-transfer": {
@@ -1055,6 +1427,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "field-phase": {
@@ -1071,6 +1449,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "CRT": {
@@ -1087,6 +1471,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "prime-power-fiber-specialization": {
@@ -1103,6 +1493,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-zero-divisor-check": {
@@ -1119,6 +1515,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "finite-unit-inverse-check": {
@@ -1135,6 +1537,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "characteristic": {
@@ -1151,6 +1559,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "rigidity": {
@@ -1167,6 +1581,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "stable-value-arithmetic": {
@@ -1183,6 +1603,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           },
           "hidden-bit-overflow-decomposition": {
@@ -1199,7 +1625,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 3,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "probabilistic-CRT-reconstruction": {
             "ring-structure": 0,
@@ -1215,7 +1647,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 2
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 2,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "collision-kernel-existence": {
             "ring-structure": 0,
@@ -1231,7 +1669,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 3,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "collision-CK-classification": {
             "ring-structure": 0,
@@ -1247,7 +1691,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 3,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "bowen-franks-SNF-certificate": {
             "ring-structure": 0,
@@ -1263,7 +1713,13 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
-            "__other__": 3
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 3,
+            "CRT-budget-bound": 0,
+            "__other__": 0
           },
           "CRT-budget-bound": {
             "ring-structure": 0,
@@ -1279,6 +1735,12 @@
             "characteristic": 0,
             "rigidity": 0,
             "stable-value-arithmetic": 0,
+            "hidden-bit-overflow-decomposition": 0,
+            "probabilistic-CRT-reconstruction": 0,
+            "collision-kernel-existence": 0,
+            "collision-CK-classification": 0,
+            "bowen-franks-SNF-certificate": 0,
+            "CRT-budget-bound": 0,
             "__other__": 0
           }
         }
