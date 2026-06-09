@@ -111,7 +111,11 @@ def load_reference(path: Path) -> tuple[list[str], dict[str, dict[str, Any]]]:
     text = path.read_text(encoding="utf-8").lstrip()
     if text.startswith("{"):
         protocol = json.loads(text)
-        allowed_labels = list(protocol.get("allowed_labels") or DEFAULT_ALLOWED_LABELS)
+        allowed_labels = list(
+            protocol.get("allowed_labels")
+            or protocol.get("allowed_template_labels")
+            or DEFAULT_ALLOWED_LABELS
+        )
         rows = protocol.get("rows")
         if not isinstance(rows, list):
             raise ValueError(f"{path} does not contain a protocol rows list")
