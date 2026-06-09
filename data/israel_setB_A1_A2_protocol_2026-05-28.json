@@ -17,7 +17,7 @@
       "prompt_template": "You are given one Lean-verified mathematical anchor from the FiberRing/POM corpus.\n\nStatement:\n{equation_or_object}\n\nKnown Lean verdict:\n{lean_verdict}\n\nTask:\nChoose the structural template that explains the verdict. Answer in exactly this format:\n\nVerdict: True / False / Conditional\nTemplate: one label from the allowed template list\nReason: 2-4 sentences explaining why the template applies\nCaveat: any necessary hypothesis, index shift, modulus, finite-state boundary, or reconstruction condition\n\nDo not cite Lean code. Do not introduce facts beyond the statement and verdict. If the statement is conditional, preserve the condition instead of turning it into an unconditional claim."
     }
   },
-  "allowed_template_labels": [
+  "allowed_labels": [
     "ring-structure",
     "operation-bridge",
     "stable-value-map",
