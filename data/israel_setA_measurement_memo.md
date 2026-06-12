@@ -10,13 +10,13 @@ Because A1 does not expose whether Lean actually proved the statement, the evalu
 
 ## A2: cue-conditioned routing
 
-A2 prompts add the known Lean verdict. This measures how well the model uses proof-status and witness cues such as declared instances, CRT packages, explicit finite calculations, and preservation lemmas. A2 is not a blind math-reading score; it is a cue-conditioned routing score.
+A2 prompts add the Lean verdict / witness cue. This measures how well the model uses proof-status and witness cues such as declared instances, CRT packages, explicit finite calculations, and preservation lemmas. A2 is not a blind math-reading score; it is a cue-conditioned routing score.
 
 For almost all rows the expected verdict is `True`. Row `fr-021` is scored as `Conditional` because the additive-order statement includes the explicit hypothesis `2 ≤ m`.
 
 ## A2 minus A1 gap
 
-The A2-A1 gap is the headline estimate of how much routing improves when the model sees the Lean verdict. A positive template-accuracy gap means the verdict cue disambiguates neighboring buckets. A small gap can mean the statement was already structurally clear, or that the model did not use the verdict effectively.
+The A2-A1 gap is the headline estimate of how much routing improves when the model sees the Lean verdict / witness cue. A positive template-accuracy gap means the cue disambiguates neighboring buckets. A small gap can mean the statement was already structurally clear, or that the model did not use the cue effectively.
 
 Interpret the gap per model, because different models may have different priors about Lean, algebraic structures, and finite-ring calculations.
 

@@ -51,7 +51,7 @@ blind conditions (no structural cue), gpt-oss-120b achieves $80.3\%$
 template accuracy on 22 clean-anchor FiberRing items
 ($n=66$ evaluations; temperature~$=0$, seed~$=0$, reasoning~$=\mathrm{low}$),
 while Llama~3.3~70B reaches $68.2\%$.
-Exposing a Lean-anchored certificate-family annotation as a cue
+Exposing a Lean verdict / witness cue drawn from the formalization
 (Condition~A2) raises accuracy to $90.9\%$ and $81.8\%$
 respectively~---~a gap of $+10.6$ and $+13.6$ percentage points that we term
 \textbf{cue-induced routing uplift}.
@@ -137,7 +137,7 @@ the single equation $x^2 = x + 1$.
 The corpus provides 22 clean-anchor items spanning 13 distinct
 proof-mechanism families, each anchored to a named Lean declaration.
 We design a two-condition evaluation---blind routing (A1) and
-certificate-annotated routing (A2)---and measure template accuracy,
+Lean-cue-conditioned routing (A2)---and measure template accuracy,
 verdict accuracy, caveat hit rate, and the A2\,$-$\,A1 gap across two
 models and three runs each (264 total evaluations).
 
@@ -151,7 +151,7 @@ models and three runs each (264 total evaluations).
 
   \item We identify and explain the \textbf{dominant failure mode}:
         a CRT\,$\to$\,ring-equivalence misroute that resolves completely
-        under certificate-annotated routing, with a direct structural correlate
+        under Lean-cue-conditioned routing, with a direct structural correlate
         in the Lean formalization.
 
   \item We distinguish \textbf{cue-induced} from \textbf{cue-resistant}
@@ -242,7 +242,7 @@ Property & Value \\
 Corpus & FiberRing Set A \\
 Formal source & Automath/Omega Lean~4 FiberRing artifacts \\
 Clean-anchor items & 22 \\
-Conditions & A1 blind routing; A2 certificate-annotated routing \\
+Conditions & A1 blind routing; A2 Lean-cue-conditioned routing \\
 Rendered prompts & 44 \\
 Allowed labels & 13 proof-mechanism families \\
 Reference fields & Template, verdict, caveat keywords \\
@@ -266,12 +266,13 @@ The total API cost for the run was \$0.05 USD.
 
 The two conditions isolate different kinds of routing information. A1 is
 blind structural routing: the model sees only the item identifier, the
-equation or object, and the allowed label set. A2 is certificate-annotated
-routing: the model sees the same information plus a Lean-anchored
-certificate-family annotation describing the relevant named artifact or
-certificate family. The primary comparison is the A2\,$-$\,A1 gap, which
-measures how much this certificate-family cue improves mechanism selection
-for the same item distribution.
+equation or object, and the allowed label set. A2 is Lean-cue-conditioned
+routing: the model sees the same information plus the protocol's
+\texttt{lean\_verdict} field. This field is a verdict / witness cue drawn
+from the formalization: it exposes proof-status information and often names
+the relevant artifact, instance, package, or certificate family. The primary
+comparison is the A2\,$-$\,A1 gap, which measures how much this Lean-side cue
+improves mechanism selection for the same item distribution.
 
 \begin{table}[t]
 \centering
@@ -298,7 +299,7 @@ underscores, and hyphenation. Verdict accuracy normalizes common variants
 of true, false, conditional, and unknown verdicts; in A1,
 \texttt{Unknown{-}from{-}statement} is accepted when the protocol marks it
 as admissible, since the blind prompt does not expose the expected verdict
-field or certificate-family annotation.
+field or Lean-side witness cue.
 Caveat hit rate is a secondary keyword measure over the model's caveat,
 reason, and raw response fields. Confusion matrices are computed over the
 13 allowed labels plus \texttt{\_\_other\_\_} for invalid or blank
@@ -309,8 +310,8 @@ predictions.
 
 Table~\ref{tab:template} reports template accuracy, verdict accuracy, and
 caveat hit rate for both models under both conditions.
-The A2\,$-$\,A1 gaps show that exposing the Lean-anchored
-certificate-family annotation improves mechanism selection across the board,
+The A2\,$-$\,A1 gaps show that exposing the Lean verdict / witness cue
+improves mechanism selection across the board,
 while the magnitude and pattern of the gaps differ between models.
 
 \begin{table}[htbp]
@@ -344,12 +345,12 @@ configuration, so the observed errors are not explained by ordinary sampling
 variance within this run setup.
 
 \paragraph{Cue-induced routing uplift.}
-Exposing the Lean-anchored certificate-family annotation (A2) raises template
+Exposing the Lean verdict / witness cue (A2) raises template
 accuracy by $+10.6$~pp for gpt-oss-120b and $+13.6$~pp for Llama.
 The uplift is entirely attributable to the structural cues embedded in the
-certificate-family annotation: the models route correctly once they can read
-the mechanism language, not because they infer it from the mathematical object
-alone.
+Lean-side cue: the models route correctly once they can read the exposed
+proof-status and witness-family language, not because they infer it from the
+mathematical object alone.
 
 \paragraph{Verdict--template dissociation.}
 The two models show a notable divergence in verdict accuracy.
@@ -368,8 +369,8 @@ condition, restricted to label pairs with at least one misroute.
 The dominant failure is CRT\,$\to$\,ring-equivalence: gpt-oss-120b misroutes
 7 of 12 CRT items ($58.3\%$) under A1 and zero under A2; Llama misroutes 6
 of 12 ($50.0\%$) under A1 and zero under A2.
-This error resolves completely in both models once the certificate-family
-annotation is exposed, identifying it as a cue-induced routing failure.
+This error resolves completely in both models once the Lean-side witness cue is
+exposed, identifying it as a cue-induced routing failure.
 
 Two label pairs produce misroutes in both conditions across both models:
 \begin{center}
@@ -379,7 +380,7 @@ Two label pairs produce misroutes in both conditions across both models:
 \end{tabular}
 \end{center}
 These cue-resistant errors persist regardless of whether the
-certificate-family annotation is exposed, distinguishing them structurally
+Lean-side witness cue is exposed, distinguishing them structurally
 from the CRT failure mode.
 
 \begin{table}[htbp]
@@ -529,9 +530,9 @@ mechanism one layer down.
 The A1/A2 design lets us separate two kinds of routing failure that would
 otherwise be conflated.
 Cue-induced failures, such as the CRT misroute, resolve completely once the
-certificate-family annotation exposes the mechanism language; they reflect
+Lean-side witness cue exposes the mechanism language; they reflect
 underspecification in the object text rather than a stable limit on the model.
-Cue-resistant failures persist regardless of the certificate-family annotation
+Cue-resistant failures persist regardless of the Lean-side witness cue
 and isolate genuine structure: one is a clean formal distinction obscured by
 surface-language overlap,
 \begin{center}
@@ -564,12 +565,12 @@ subset.
 \label{sec:conclusion}
 
 We evaluated structural routing in two LLMs over 22 Lean-verified FiberRing
-items under blind (A1) and certificate-annotated (A2) routing.
+items under blind (A1) and Lean-cue-conditioned (A2) routing.
 Under blind conditions, template accuracy reaches a ceiling of $80.3\%$
-(gpt-oss-120b) and $68.2\%$ (Llama~3.3~70B); exposing the Lean-anchored
-certificate-family annotation lifts both by $10.6$ and $13.6$~pp respectively.
+(gpt-oss-120b) and $68.2\%$ (Llama~3.3~70B); exposing the Lean verdict /
+witness cue lifts both by $10.6$ and $13.6$~pp respectively.
 The dominant failure is a CRT\,$\to$\,ring-equivalence misroute that resolves
-completely under the certificate-family cue, while two label pairs misroute
+completely under the Lean-side cue, while two label pairs misroute
 regardless of the cue.
 A verdict--template dissociation in Llama confirms that truth inference and
 proof-mechanism classification are separable capacities.
