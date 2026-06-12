@@ -5,9 +5,9 @@
 This repository contains the evaluation pipeline for the **FiberRing Israel routing benchmarks**. The benchmarks test whether language models can correctly route formalized algebraic claims (from Lean 4 FiberRing/POM/CollisionKernel artifacts) to the right proof-template family under two experimental conditions:
 
 - **A1** — blind structural routing: model sees only the equation/object and the label list.
-- **A2** — cue-conditioned routing: model also sees the known Lean verdict.
+- **A2** — cue-conditioned routing: model also sees the Lean verdict / witness cue.
 
-Set A uses 22 FiberRing rows and 13 labels. Set B is a 6-row extension with 19 labels covering FiberRing/POM bridge, CRT-budget, and CollisionKernel certificates. The A2 - A1 gap measures how much routing improves when the Lean proof status is revealed.
+Set A uses 22 FiberRing rows and 13 labels. Set B is a 6-row extension with 19 labels covering FiberRing/POM bridge, CRT-budget, and CollisionKernel certificates. The A2 - A1 gap measures how much routing improves when the Lean verdict / witness cue is revealed.
 
 ---
 
@@ -44,6 +44,9 @@ fiber-routing-eval/
 ├── results/                       # Human-readable results reports
 │   ├── fiberring_setA_results_2026-05-27.md  # Set A results report
 │   └── fiberring_setB_results_2026-05-28.md  # Set B results report
+│
+├── docs/                          # Review and coordination notes
+│   └── lean_side_framing_review.md # Automath/Omega Lean-side review checklist
 │
 ├── papers/                        # Manuscript and bibliography (in progress)
 │   ├── main.tex
@@ -88,6 +91,9 @@ python tools/israel_setA_evaluate.py \
 See `results/` for human-readable reports. See `experiments/israel_setA_summary.json` for full metrics and confusion matrices.
 For Set B, see `results/fiberring_setB_results_2026-05-28.md` and
 `experiments/israel_setB_summary.json`.
+
+For formalization-side wording and source-obligation review, see
+`docs/lean_side_framing_review.md`.
 
 ---
 

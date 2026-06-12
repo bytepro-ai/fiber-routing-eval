@@ -3,7 +3,7 @@
 This repository contains a complete, runnable evaluation pipeline for the FiberRing routing benchmarks. It tests whether models route formalized algebra statements to the intended proof-template family under two conditions:
 
 - `A1`: blind structural routing from the equation/object only.
-- `A2`: cue-conditioned routing with the known Lean verdict included.
+- `A2`: cue-conditioned routing with the Lean verdict / witness cue included.
 
 Set A has 22 FiberRing rows, 13 allowed labels, and 44 prompts total. Set B is a 6-row extension with 19 allowed labels and 12 prompts, covering FiberRing/POM bridge, CRT-budget, and CollisionKernel certificates.
 
@@ -132,6 +132,13 @@ Typical generated files:
 - `experiments/israel_setB_row_scores.csv`: Set B row-level scoring details
 - `results/fiberring_setA_results_2026-05-27.md`: human-readable Set A report
 - `results/fiberring_setB_results_2026-05-28.md`: human-readable Set B report
+
+## Lean-Side Review
+
+Use `docs/lean_side_framing_review.md` to review the Automath/Omega
+formalization side: Lean-verified artifacts, Lean-side witness cues,
+certificate-family annotations, proof-mechanism labels, source obligations,
+and manuscript wording.
 
 ## Notes On Collaboration And Cost
 

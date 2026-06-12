@@ -28,7 +28,7 @@ The six Set B mechanism labels are:
 Set B uses the same A1/A2 design as Set A:
 
 - `A1`: blind structural routing from the equation/object only.
-- `A2`: verdict-conditioned routing with the known Lean verdict included.
+- `A2`: cue-conditioned routing with the Lean verdict / witness cue included.
 
 ---
 
