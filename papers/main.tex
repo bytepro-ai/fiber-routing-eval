@@ -1,5 +1,5 @@
 % ─────────────────────────────────────────────────────────────────────────────
-% FiberRing Routing Evaluation — Paper Draft v0.1
+% FiberRing Routing Evaluation — Paper Draft v0.4
 % Authors: Manuel Israel Cázares (Bytepro AI) · Wenlin Zhang (NUS / Omega Institute)
 % Title: subject to Wenlin's approval — see comment below
 % ─────────────────────────────────────────────────────────────────────────────
@@ -40,8 +40,8 @@
 \begin{abstract}
 We present an empirical study of structural routing failure in large language
 models (LLMs) over a formally verified algebraic corpus. The task requires
-selecting the correct proof-mechanism label---from a fixed closed set of 13
-templates---for compact mathematical objects drawn from the FiberRing
+selecting the correct proof-mechanism label---from a fixed closed
+template set---for compact mathematical objects drawn from the FiberRing
 formalization in Lean~4~\cite{omega2026automath}, where each evaluation item
 is anchored to a Lean-verified artifact and assigned a proof-mechanism label
 from the corresponding named certificate family.
@@ -91,6 +91,16 @@ improves $13.6$~pp with the cue. This confirms that truth inference and
 proof-mechanism classification are separable capacities---consistent with
 the Lean formalization, where a statement's truth value and its certificate
 family are encoded at different layers.
+
+A cross-corpus extension (Set~B; 6 POM/CollisionKernel items, 19 labels,
+72 additional evaluations) replicates the central pattern: the
+CRT-granularity compression reappears with entirely different labels
+(\texttt{CRT{-}budget{-}bound}\,$\to$\,\texttt{CRT} is cue-resistant),
+and an inverse cross-model dissociation emerges---gpt-oss-120b shows
+verdict uplift with template accuracy flat at $100.0\%$, while Llama
+shows template uplift ($+27.8$~pp) with verdict flat---providing
+additional evidence that truth inference and mechanism classification
+are separable capacities.
 
 These findings extend the \textbf{router hypothesis} introduced in
 C\'azares~(2026)~\cite{sair2026} from equational reasoning to formal
@@ -227,8 +237,7 @@ a prime-power specialization of a general stable-value equivalence.
 
 Each item is rendered under two conditions. In A1, the prompt contains the
 item identifier, the equation or object, and the allowed label set. In A2,
-the same prompt additionally includes a Lean-anchored certificate-family
-annotation. This yields 44 prompts total. The protocol file stores the
+the same prompt additionally includes the Lean verdict / witness cue. This yields 44 prompts total. The protocol file stores the
 expected template, expected verdict, caveat keywords, and item-level metadata;
 the prompt pack stores the exact text sent to the model.
 Table~\ref{tab:dataset-summary} summarizes the resulting evaluation set.
@@ -262,8 +271,8 @@ Reference fields & Template, verdict, caveat keywords \\
 \label{sec:methodology}
 
 We evaluate routing as a constrained classification task. For each prompt,
-the model must return four fields: a template label from the closed
-13-label set, a verdict, a one-sentence reason, and a short caveat. The
+the model must return four fields: a template label from the closed label set
+(13 labels for Set~A; 19 for Set~B), a verdict, a one-sentence reason, and a short caveat. The
 pipeline sends the rendered prompt pack to Together AI through the
 OpenAI-compatible chat-completions endpoint. Each prompt is run three times
 per model at temperature $0$ and seed $0$, yielding 264 evaluations for Set~A
@@ -295,6 +304,7 @@ Runs & 3 per prompt per model \\
 Temperature / seed & $0$ / $0$ \\
 Reasoning setting & low for gpt-oss-120b; disabled for Llama \\
 Set~A evaluations & 264 \\
+Set~B evaluations & 72 \\
 Total cost (Set~A + Set~B) & \$0.08~USD \\
 \bottomrule
 \end{tabular}
@@ -311,7 +321,7 @@ as admissible, since the blind prompt does not expose the expected verdict
 field or Lean-side witness cue.
 Caveat hit rate is a secondary keyword measure over the model's caveat,
 reason, and raw response fields. Confusion matrices are computed over the
-13 allowed labels plus \texttt{\_\_other\_\_} for invalid or blank
+allowed labels (13 for Set~A; 19 for Set~B) plus \texttt{\_\_other\_\_} for invalid or blank
 predictions.
 
 \section{Results}
