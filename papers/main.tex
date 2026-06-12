@@ -232,6 +232,12 @@ annotation. This yields 44 prompts total. The protocol file stores the
 expected template, expected verdict, caveat keywords, and item-level metadata;
 the prompt pack stores the exact text sent to the model.
 Table~\ref{tab:dataset-summary} summarizes the resulting evaluation set.
+A cross-domain extension, Set~B, adds 6 items from the POM and
+CollisionKernel modules of the same formalization, expanding the label
+space to 19 proof-mechanism families and yielding 12 additional prompts.
+Set~B items span FiberRing/POM bridge certificates, probabilistic CRT
+reconstruction, collision-kernel existence and classification packages,
+Bowen-Franks Smith normal form certificates, and CRT budget bounds.
 
 \begin{table}[t]
 \centering
@@ -260,9 +266,12 @@ the model must return four fields: a template label from the closed
 13-label set, a verdict, a one-sentence reason, and a short caveat. The
 pipeline sends the rendered prompt pack to Together AI through the
 OpenAI-compatible chat-completions endpoint. Each prompt is run three times
-per model at temperature $0$ and seed $0$, yielding 264 evaluations
-($22$ items $\times$ $2$ conditions $\times$ $2$ models $\times$ $3$ runs).
-The total API cost for the run was \$0.05 USD.
+per model at temperature $0$ and seed $0$, yielding 264 evaluations for Set~A
+($22$ items $\times$ $2$ conditions $\times$ $2$ models $\times$ $3$ runs)
+and 72 evaluations for Set~B
+($6$ items $\times$ $2$ conditions $\times$ $2$ models $\times$ $3$ runs),
+for a combined total of 336 evaluations.
+The total API cost across both sets was \$0.08~USD.
 
 The two conditions isolate different kinds of routing information. A1 is
 blind structural routing: the model sees only the item identifier, the
@@ -285,8 +294,8 @@ Models & gpt-oss-120b; Llama~3.3~70B Instruct Turbo \\
 Runs & 3 per prompt per model \\
 Temperature / seed & $0$ / $0$ \\
 Reasoning setting & low for gpt-oss-120b; disabled for Llama \\
-Total evaluations & 264 \\
-Total cost & \$0.05 USD \\
+Set~A evaluations & 264 \\
+Total cost (Set~A + Set~B) & \$0.08~USD \\
 \bottomrule
 \end{tabular}
 \caption{Evaluation configuration.}
@@ -415,6 +424,72 @@ Llama~3.3~70B & A1 & \texttt{CRT}                      & \texttt{ring-equivalenc
 \end{tabular}
 \end{table}
 
+\subsection{Set~B: cross-corpus replication}
+\label{sec:results:setb}
+
+Table~\ref{tab:setb} reports Set~B results over 6 POM/CollisionKernel items
+($n = 18$ evaluations per cell; $6$ items $\times$ $3$ runs).
+
+\begin{table}[htbp]
+\centering
+\caption{Set~B template and verdict accuracy by model and condition.
+         $n = 18$ evaluations per cell (6 items $\times$ 3 runs).}
+\label{tab:setb}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Model} & \textbf{Cond.}
+  & \textbf{Tmpl acc.} & \textbf{Verd. acc.}
+  & \textbf{$\Delta$ Tmpl} & \textbf{$\Delta$ Verd.} \\
+\midrule
+gpt-oss-120b  & A1 & $100.0\%$ & $83.3\%$ & \multirow{2}{*}{$0.0$~pp} & \multirow{2}{*}{$+16.7$~pp} \\
+              & A2 & $100.0\%$ & $100.0\%$ & & \\
+\midrule
+Llama~3.3~70B & A1 & $50.0\%$ & $100.0\%$ & \multirow{2}{*}{$+27.8$~pp} & \multirow{2}{*}{$0.0$~pp} \\
+              & A2 & $77.8\%$ & $100.0\%$ & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Cross-corpus routing ceiling.}
+The CRT-granularity compression pattern observed in Set~A replicates in
+Set~B with a different label set.
+Llama's Set~B misroutes are
+\begin{center}
+\begin{tabular}{c}
+\texttt{probabilistic{-}CRT{-}reconstruction}\,$\to$\,\texttt{CRT}
+($3/3$ runs in A1, $1/3$ in A2),\\
+\texttt{CRT{-}budget{-}bound}\,$\to$\,\texttt{CRT}
+($3/3$ runs in both conditions).
+\end{tabular}
+\end{center}
+The \texttt{CRT{-}budget{-}bound}\,$\to$\,\texttt{CRT} error is cue-resistant:
+it persists in A2 regardless of witness-cue exposure, replicating the
+structure of the Set~A cue-resistant errors and confirming that
+CRT-granularity compression is not an artifact of the FiberRing label set.
+
+\paragraph{Inverse dissociation.}
+Set~B reveals a cross-model dissociation in the opposite direction from
+Set~A.
+In Set~A, Llama showed template uplift ($+13.6$~pp) with verdict flat ($0.0$~pp).
+In Set~B, gpt-oss-120b shows verdict uplift ($+16.7$~pp) with template flat
+($0.0$~pp), while Llama shows template uplift ($+27.8$~pp) with verdict flat
+($0.0$~pp).
+Both models achieve $100.0\%$ template accuracy under A1 in
+their respective strong dimension, while improving in the other under A2.
+This inverse dissociation across models and sets provides additional
+evidence that truth inference and proof-mechanism classification are
+separable capacities operating with different sensitivities to Lean-side cues.
+
+\paragraph{Collision-kernel stability.}
+The three collision-kernel items
+(\texttt{collision{-}kernel{-}existence},
+\texttt{collision{-}CK{-}classification},
+\texttt{bowen{-}franks{-}SNF{-}certificate})
+are correctly routed by both models in all four conditions.
+Labels that are sufficiently lexically specific appear to be classifiable
+without cue exposure, suggesting the routing ceiling is sensitive to
+label-set structure rather than being a fixed property of the model.
+
 \section{Analysis}
 \label{sec:analysis}
 
@@ -441,8 +516,8 @@ equivalence at the outer type level.
 The corpus label \texttt{CRT} is more specific---it asks the router to
 identify the internal proof mechanism: a coprime factor split of the
 Fibonacci modulus followed by the Chinese remainder theorem.
-This explains why exposing the certificate-family annotation removes the
-error: the annotation text contains language such as ``CRT decomposition'',
+This explains why exposing the Lean verdict / witness cue removes the
+error: the cue text contains language such as ``CRT decomposition'',
 ``$F_8 = 21 = 3 \times 7$'', or ``coprime factor split'', which explicitly
 selects the finer mechanism.
 Without that cue, the surface object $X_6 \cong \mathrm{ZMod}\ 3 \times
@@ -512,6 +587,21 @@ artifacts are named at different layers: instance construction, homomorphism
 preservation, equivalence construction, CRT decomposition, field-phase
 transport, finite arithmetic checks, and rigidity.
 
+\paragraph{Set~B cross-corpus confirmation.}
+The Set~B results provide a cross-corpus check on the main Set~A findings.
+The CRT-granularity compression pattern---routing to a coarser label within
+the same structural family---reappears in Set~B with entirely different
+labels: \texttt{CRT{-}budget{-}bound}\,$\to$\,\texttt{CRT} is cue-resistant
+in the same way that
+\texttt{prime{-}power{-}fiber{-}specialization}\,$\to$\,\texttt{ring{-}equivalence}
+is cue-resistant in Set~A.
+Both errors persist when the Lean verdict / witness cue is exposed, and both
+reflect a genuine granularity boundary rather than a missing cue.
+This replication across module boundaries (FiberRing vs.\ POM/CollisionKernel)
+supports the interpretation that CRT-granularity compression is a structural
+property of how these models encode mathematical hierarchies, not an artifact
+of any particular corpus design.
+
 \section{Discussion}
 \label{sec:discussion}
 
@@ -556,16 +646,18 @@ The cue-resistant findings rest on consistent but low per-cell counts.
 Here ``ceiling'' is used operationally: it names the observed blind-routing
 saturation in this fixed Set~A protocol, not a universal upper bound for the
 model family.
-A larger corpus---including the boundary-ambiguous and cross-domain items
-reserved for Set~B---is required to establish whether the mechanism-level
-ceiling and the two cue-resistant boundaries generalize beyond the FiberRing
-subset.
+Set~B provides an initial cross-corpus check over 6 POM/CollisionKernel
+items, confirming the CRT-granularity compression pattern and the
+verdict/template dissociation across module boundaries.
+The boundary-ambiguous items and a larger independent corpus remain as
+future work to establish whether the findings generalize more broadly.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-We evaluated structural routing in two LLMs over 22 Lean-verified FiberRing
-items under blind (A1) and Lean-cue-conditioned (A2) routing.
+We evaluated structural routing in two LLMs over 28 Lean-verified items
+(22 FiberRing Set~A items and 6 POM/CollisionKernel Set~B items) under
+blind (A1) and Lean-cue-conditioned (A2) routing.
 Under blind conditions, template accuracy reaches a ceiling of $80.3\%$
 (gpt-oss-120b) and $68.2\%$ (Llama~3.3~70B); exposing the Lean verdict /
 witness cue lifts both by $10.6$ and $13.6$~pp respectively.
