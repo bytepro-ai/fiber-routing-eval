@@ -671,14 +671,15 @@ future work to establish whether the findings generalize more broadly.
 We evaluated structural routing in two LLMs over 28 Lean-verified items
 (22 FiberRing Set~A items and 6 POM/CollisionKernel Set~B items) under
 blind (A1) and Lean-cue-conditioned (A2) routing.
-Under blind conditions, template accuracy reaches a ceiling of $80.3\%$
+On Set~A, blind template accuracy reaches a ceiling of $80.3\%$
 (gpt-oss-120b) and $68.2\%$ (Llama~3.3~70B); exposing the Lean verdict /
 witness cue lifts both by $10.6$ and $13.6$~pp respectively.
-The dominant failure is a CRT\,$\to$\,ring-equivalence misroute that resolves
-completely under the Lean-side cue, while two label pairs misroute
+The dominant Set~A failure is a CRT\,$\to$\,ring-equivalence misroute that
+resolves completely under the Lean-side cue, while two label pairs misroute
 regardless of the cue.
-A verdict--template dissociation in Llama confirms that truth inference and
-proof-mechanism classification are separable capacities.
+Set~B adds a cross-corpus check: CRT-granularity compression reappears with
+POM/CollisionKernel labels, and the verdict--template dissociation persists
+across models.
 
 These results extend the router hypothesis to formally verified algebraic
 structures and locate the failure precisely: LLMs route correctly over broad
