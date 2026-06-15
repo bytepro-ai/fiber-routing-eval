@@ -29,7 +29,8 @@ fiber-routing-eval/
 │   └── eval_pipeline_together.py  # Together AI runner (OpenAI-compatible client)
 │
 ├── tools/                         # Evaluation and scoring utilities
-│   └── israel_setA_evaluate.py    # Scorer: reads predictions + protocol, writes summary + CSV
+│   ├── israel_setA_evaluate.py    # Scorer: reads predictions + protocol, writes summary + CSV
+│   └── check_lean_source_manifest.py # Checks Lean source-anchor manifest against protocols
 │
 ├── experiments/                   # Generated outputs from pipeline runs
 │   ├── israel_setA_predictions.jsonl  # Raw model outputs (264 rows for Set A)
@@ -46,7 +47,8 @@ fiber-routing-eval/
 │   └── fiberring_setB_results_2026-05-28.md  # Set B results report
 │
 ├── docs/                          # Review and coordination notes
-│   └── lean_side_framing_review.md # Automath/Omega Lean-side review checklist
+│   ├── lean_side_framing_review.md # Automath/Omega Lean-side review checklist
+│   └── lean_source_anchor_manifest.jsonl # Lean anchors for all Set A/B protocol rows
 │
 ├── papers/                        # Manuscript and bibliography (in progress)
 │   ├── main.tex
@@ -94,6 +96,10 @@ For Set B, see `results/fiberring_setB_results_2026-05-28.md` and
 
 For formalization-side wording and source-obligation review, see
 `docs/lean_side_framing_review.md`.
+
+For machine-readable Lean source anchors, see
+`docs/lean_source_anchor_manifest.jsonl` and run
+`python3 tools/check_lean_source_manifest.py`.
 
 ---
 

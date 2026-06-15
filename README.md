@@ -20,10 +20,14 @@ data/
   israel_setB_predictions_template_2026-05-28.jsonl
 tools/
   israel_setA_evaluate.py                # scorer for prediction JSONL
+  check_lean_source_manifest.py          # checks Lean source-anchor manifest against protocols
 scripts/
   eval_pipeline_together.py              # Together AI runner
 experiments/                             # generated predictions and machine-readable reports
 results/                                 # human-readable results reports
+docs/
+  lean_source_anchor_manifest.jsonl      # Lean source anchors for all Set A/B rows
+  lean_side_framing_review.md            # formalization-side review checklist
 .env.example                             # TOGETHER_API_KEY placeholder
 README.md
 ```
@@ -139,6 +143,14 @@ Use `docs/lean_side_framing_review.md` to review the Automath/Omega
 formalization side: Lean-verified artifacts, Lean-side witness cues,
 certificate-family annotations, proof-mechanism labels, source obligations,
 and manuscript wording.
+
+The machine-readable source-anchor manifest is
+`docs/lean_source_anchor_manifest.jsonl`. It maps every Set A and Set B row to
+Automath/Omega Lean declarations and line anchors. Check it with:
+
+```bash
+python3 tools/check_lean_source_manifest.py
+```
 
 ## Notes On Collaboration And Cost
 
