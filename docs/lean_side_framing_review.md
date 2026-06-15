@@ -17,6 +17,18 @@ and repository describe the formalization-side material accurately:
 This is meant to be a technical review surface for wording, source anchors,
 protocol labels, and manuscript claims.
 
+## Machine-Readable Anchor Manifest
+
+The source-anchor audit surface is recorded in
+`docs/lean_source_anchor_manifest.jsonl`. It gives one row for each Set A and
+Set B protocol item, mapping the benchmark row to Automath/Omega Lean
+declarations, source line references, and an explicit anchor level.
+
+Run `python3 tools/check_lean_source_manifest.py` to verify that the manifest
+and protocols stay synchronized. The checker confirms row coverage, expected
+template and witness-family agreement, protocol audit-pointer agreement, and
+exact Set B pointer mirroring.
+
 ## Review Roles
 
 Suggested review responsibilities:
