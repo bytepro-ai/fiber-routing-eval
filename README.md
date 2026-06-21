@@ -146,7 +146,9 @@ and manuscript wording.
 
 The machine-readable source-anchor manifest is
 `docs/lean_source_anchor_manifest.jsonl`. It maps every Set A and Set B row to
-Automath/Omega Lean declarations and line anchors. Check it with:
+Automath/Omega Lean declarations and line anchors. Its row schema, anchor
+levels, and validation invariants are documented in
+`docs/lean_source_anchor_manifest_spec.md`. Check the manifest with:
 
 ```bash
 python3 tools/check_lean_source_manifest.py
