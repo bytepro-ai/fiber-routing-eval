@@ -48,7 +48,8 @@ fiber-routing-eval/
 │
 ├── docs/                          # Review and coordination notes
 │   ├── lean_side_framing_review.md # Automath/Omega Lean-side review checklist
-│   └── lean_source_anchor_manifest.jsonl # Lean anchors for all Set A/B protocol rows
+│   ├── lean_source_anchor_manifest.jsonl # Lean anchors for all Set A/B protocol rows
+│   └── lean_source_anchor_manifest_spec.md # Manifest schema, anchor levels, and review invariants
 │
 ├── papers/                        # Manuscript and bibliography (in progress)
 │   ├── main.tex
@@ -98,7 +99,9 @@ For formalization-side wording and source-obligation review, see
 `docs/lean_side_framing_review.md`.
 
 For machine-readable Lean source anchors, see
-`docs/lean_source_anchor_manifest.jsonl` and run
+`docs/lean_source_anchor_manifest.jsonl`. For the manifest row schema, anchor
+levels, and review invariants, see
+`docs/lean_source_anchor_manifest_spec.md`. Check the manifest with
 `python3 tools/check_lean_source_manifest.py`.
 
 ---
