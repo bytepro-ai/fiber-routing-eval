@@ -21,8 +21,10 @@ the benchmark auditable:
 This distinction is important for manuscript wording. A benchmark row may be
 Lean-anchored without being a one-to-one natural-language translation of a
 single Lean theorem. Some rows are direct theorem rows; others are anchored to a
-declaration family, typeclass instance, certificate predicate, or source-family
-package.
+theorem family, a broader source family, or an explicitly recorded source gap.
+Individual source references may still point to declarations whose `kind` is
+`def`, `instance`, or another declaration category; those are source-reference
+kinds, not row-level `anchor_level` values.
 
 ## Manifest Row Schema
 
@@ -87,21 +89,22 @@ anchored. `kind` records the source category, such as `theorem`, `def`, or
 
 `anchor_level` records how directly the evaluation row is represented in Lean.
 It prevents overclaiming by separating direct theorem anchors from broader
-source-family anchors.
+source-family anchors. The checker accepts exactly these row-level values:
+`theorem`, `theorem-family`, `source-family`, and `source-gap`.
 
 | Anchor level | Meaning | Manuscript implication |
 |---|---|---|
 | `theorem` | The row is supported by a specific Lean theorem whose statement directly captures the row or publication-facing claim. | It is usually safe to call the referenced artifact Lean-verified, while still avoiding claims beyond the theorem statement. |
 | `theorem-family` | The row is supported by a related family of theorems, definitions, or packaging lemmas. The benchmark row may summarize the mechanism family rather than translate one theorem verbatim. | Describe the row as Lean-anchored or anchored to a theorem family. Do not imply a one-to-one theorem translation unless a direct theorem is listed and reviewed. |
-| `def` | The row is anchored to a Lean definition, construction, predicate, or equivalence object. | The construction is present in Lean, but the natural-language row may need supporting theorems before being described as a verified proposition. |
-| `instance` | The row is anchored to a Lean typeclass instance, such as a `CommRing` or `Field` instance. | It is appropriate to describe the instance as formalized; avoid turning instance existence into unrelated mathematical consequences. |
-| `certificate-family` | The row is anchored to a named certificate package, proof mechanism, or predicate family. | The row should be described as a certificate-family or proof-mechanism classification target, not merely as a truth verdict. |
 | `source-family` | The row is anchored to a source region or module family rather than one declaration. | Use conservative wording: the item is source-anchored, but stronger claims need a more precise declaration-level anchor. |
+| `source-gap` | The intended source anchor has not been located or is known to be incomplete, and the gap is recorded in `review_note`. | Do not describe the item as Lean-verified or source-secure. Treat it as an unresolved source obligation until the gap is closed. |
 
 Current rows primarily use `theorem` and `theorem-family`, with `source_refs`
 that may include `def` and `instance` declarations. The distinction is between
 the row-level anchor granularity and the kind of each individual source
-reference.
+reference. Certificate-family language belongs in `witness_family` and
+`review_note`; it is not a separate row-level `anchor_level` value unless a
+future checker revision adds one.
 
 ## Source References
 
@@ -144,9 +147,11 @@ The manifest and protocol files should satisfy these invariants.
     manifest `source_refs` entry should mirror that path and line exactly.
 11. Manuscript claims using `Lean-verified` should refer only to source
     artifacts whose anchor level supports that wording.
-12. Rows with `theorem-family`, `certificate-family`, or `source-family`
-    anchors should not be described as one-to-one natural-language theorem
-    translations unless a direct theorem row is listed and reviewed.
+12. Rows with `theorem-family` or `source-family` anchors should not be
+    described as one-to-one natural-language theorem translations unless a
+    direct theorem row is listed and reviewed.
+13. Rows with `source-gap` anchors should explicitly explain the gap in
+    `review_note` and should not be used to support Lean-verified wording.
 
 These invariants are designed to keep three layers synchronized:
 
