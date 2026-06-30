@@ -1,0 +1,5 @@
+model,condition,n,strict_verdict_correct,strict_verdict_accuracy,abstention_accepted_correct,abstention_accepted_accuracy,unknown_predictions
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A1,66,63,95.5%,63,95.5%,0
+meta-llama/Llama-3.3-70B-Instruct-Turbo,A2,66,63,95.5%,63,95.5%,0
+openai/gpt-oss-120b,A1,66,21,31.8%,56,84.8%,35
+openai/gpt-oss-120b,A2,66,63,95.5%,63,95.5%,0
