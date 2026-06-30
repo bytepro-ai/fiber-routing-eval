@@ -1,0 +1,3 @@
+model,paired_n,a1_correct_a2_correct,a1_wrong_a2_correct,a1_wrong_a2_wrong,a1_correct_a2_wrong,improved_families,persistent_wrong_families,regressed_families,a1_wrong_a2_correct_pct,a1_correct_a2_wrong_pct
+meta-llama/Llama-3.3-70B-Instruct-Turbo,18,9,5,4,0,hidden-bit-overflow-decomposition (3); probabilistic-CRT-reconstruction (2),CRT-budget-bound (3); probabilistic-CRT-reconstruction (1),,27.8%,0.0%
+openai/gpt-oss-120b,18,18,0,0,0,,,,0.0%,0.0%
