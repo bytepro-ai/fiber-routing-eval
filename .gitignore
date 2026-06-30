@@ -8,6 +8,7 @@ papers/*.out
 papers/*.toc
 papers/*.fls
 papers/*.fdb_latexmk
+papers/build/
 .env
 FiberRing/
 *.pyc

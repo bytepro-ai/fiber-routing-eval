@@ -52,8 +52,8 @@ blind conditions (no structural cue), gpt-oss-120b achieves $80.3\%$
 template accuracy on 22 clean-anchor FiberRing items
 ($n=66$ evaluations; temperature~$=0$, seed~$=0$, reasoning~$=\mathrm{low}$),
 while Llama~3.3~70B reaches $68.2\%$.
-Exposing a Lean verdict / witness cue drawn from the formalization
-(Condition~A2) raises accuracy to $90.9\%$ and $81.8\%$
+Exposing a mechanism-bearing Lean verdict / witness cue drawn from the
+formalization (Condition~A2) raises accuracy to $90.9\%$ and $81.8\%$
 respectively~---~a gap of $+10.6$ and $+13.6$ percentage points that we term
 \textbf{cue-induced routing uplift}.
 
@@ -94,7 +94,7 @@ the Lean formalization, where a statement's truth value and its certificate
 family are encoded at different layers.
 
 A cross-corpus extension (Set~B; 6 POM/CollisionKernel items, 19 labels,
-72 additional evaluations) replicates the central pattern: the
+72 additional evaluations) provides a small cross-module check: the
 CRT-granularity compression reappears with entirely different labels
 (\texttt{CRT{-}budget{-}bound}\,$\to$\,\texttt{CRT} is cue-resistant),
 and an inverse cross-model dissociation emerges---gpt-oss-120b shows
@@ -107,8 +107,11 @@ These findings extend the \textbf{router hypothesis} introduced in
 C\'azares~(2026)~\cite{sair2026} from equational reasoning to formal
 algebraic structures: LLMs act as structural classifiers routing over
 broad mathematical types, and fail specifically at the level of
-fine-grained proof mechanisms. The full evaluation pipeline, prompt pack,
-and results are available in the project repository at
+fine-grained proof mechanisms. The repository also includes a machine-readable
+Lean source-anchor manifest linking every evaluation row to source snapshots,
+declaration anchors, witness families, and review notes. The full evaluation
+pipeline, prompt pack, manifest, and results are available in the project
+repository at
 \url{https://github.com/bytepro-ai/fiber-routing-eval}.
 \end{abstract}
 
@@ -148,7 +151,7 @@ the single equation $x^2 = x + 1$.
 The corpus provides 22 clean-anchor items spanning 13 distinct
 proof-mechanism families, each anchored to a named Lean declaration.
 We design a two-condition evaluation---blind routing (A1) and
-Lean-cue-conditioned routing (A2)---and measure template accuracy,
+mechanism-bearing Lean-cue-conditioned routing (A2)---and measure template accuracy,
 verdict accuracy, caveat hit rate, and the A2\,$-$\,A1 gap across two
 models and three runs each (264 total evaluations).
 
@@ -162,13 +165,18 @@ models and three runs each (264 total evaluations).
 
   \item We identify and explain the \textbf{dominant failure mode}:
         a CRT\,$\to$\,ring-equivalence misroute that resolves completely
-        under Lean-cue-conditioned routing, with a direct structural correlate
+        under mechanism-bearing Lean-cue-conditioned routing, with a direct structural correlate
         in the Lean formalization.
 
   \item We distinguish \textbf{cue-induced} from \textbf{cue-resistant}
         routing errors, showing that two persistent failure modes correspond
         to genuine granularity boundaries in the proof-mechanism label set
         rather than failures correctable by additional structural cues.
+
+  \item We release a \textbf{Lean source-anchor manifest} connecting each
+        benchmark row to a source snapshot, proof-mechanism label,
+        witness-family note, and Lean declaration anchors, making the dataset
+        auditable as a formal-corpus artifact rather than only a prompt set.
 \end{enumerate}
 
 \section{Related Work}
@@ -238,7 +246,8 @@ a prime-power specialization of a general stable-value equivalence.
 
 Each item is rendered under two conditions. In A1, the prompt contains the
 item identifier, the equation or object, and the allowed label set. In A2,
-the same prompt additionally includes the Lean verdict / witness cue. This yields 44 prompts total. The protocol file stores the
+the same prompt additionally includes the mechanism-bearing Lean verdict /
+witness cue. This yields 44 prompts total. The protocol file stores the
 expected template, expected verdict, caveat keywords, and item-level metadata;
 the prompt pack stores the exact text sent to the model.
 Table~\ref{tab:dataset-summary} summarizes the resulting evaluation set.
@@ -249,6 +258,40 @@ Set~B items span FiberRing/POM bridge certificates, probabilistic CRT
 reconstruction, collision-kernel existence and classification packages,
 Bowen-Franks Smith normal form certificates, and CRT budget bounds.
 
+\subsection{Lean source-anchor manifest}
+\label{sec:source-anchor-manifest}
+
+The repository also records a machine-readable Lean source-anchor manifest.
+Each manifest row links a benchmark item to its expected proof-mechanism label,
+witness-family language, source snapshot, and one or more Lean declaration
+anchors. This separates three layers that are otherwise easy to conflate: the
+natural-language prompt row, the proof-mechanism label used for routing, and
+the formal source artifact used to justify that label.
+
+The manifest uses four row-level anchor granularities:
+\texttt{theorem}, \texttt{theorem-family}, \texttt{source-family}, and
+\texttt{source-gap}. The current release contains no \texttt{source-family}
+or \texttt{source-gap} rows. Table~\ref{tab:manifest-summary} summarizes the
+audited source-anchor coverage.
+
+\begin{table}[htbp]
+\centering
+\caption{Lean source-anchor manifest summary. All rows use source snapshot
+         \texttt{automath@caa043a7733205c0152ec685d9e1870697077b70}.}
+\label{tab:manifest-summary}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Set} & \textbf{Rows} & \textbf{Theorem} & \textbf{Theorem-family}
+  & \textbf{Source gaps} & \textbf{Source refs} \\
+\midrule
+Set~A & 22 & 7 & 15 & 0 & 52 \\
+Set~B & 6  & 4 & 2  & 0 & 10 \\
+\midrule
+Total & 28 & 11 & 17 & 0 & 62 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{table}[t]
 \centering
 \begin{tabular}{ll}
@@ -258,7 +301,7 @@ Property & Value \\
 Corpus & FiberRing Set A \\
 Formal source & Automath/Omega Lean~4 FiberRing artifacts \\
 Clean-anchor items & 22 \\
-Conditions & A1 blind routing; A2 Lean-cue-conditioned routing \\
+Conditions & A1 blind routing; A2 mechanism-bearing Lean-cue routing \\
 Rendered prompts & 44 \\
 Allowed labels & 13 proof-mechanism families \\
 Reference fields & Template, verdict, caveat keywords \\
@@ -285,13 +328,13 @@ The total API cost across both sets was \$0.08~USD.
 
 The two conditions isolate different kinds of routing information. A1 is
 blind structural routing: the model sees only the item identifier, the
-equation or object, and the allowed label set. A2 is Lean-cue-conditioned
-routing: the model sees the same information plus the protocol's
-\texttt{lean\_verdict} field. This field is a verdict / witness cue drawn
-from the formalization: it exposes proof-status information and often names
-the relevant artifact, instance, package, or certificate family. The primary
-comparison is the A2\,$-$\,A1 gap, which measures how much this Lean-side cue
-improves mechanism selection for the same item distribution.
+equation or object, and the allowed label set. A2 is mechanism-bearing
+Lean-cue-conditioned routing: the model sees the same information plus the
+protocol's \texttt{lean\_verdict} field. This field is not a pure truth-value
+cue. It exposes proof-status information and often names the relevant
+artifact, instance, package, or certificate family. The primary comparison is
+the A2\,$-$\,A1 gap, which measures how much explicit formal mechanism
+metadata improves mechanism selection for the same item distribution.
 
 \begin{table}[t]
 \centering
@@ -321,6 +364,10 @@ of true, false, conditional, and unknown verdicts; in A1,
 \texttt{Unknown{-}from{-}statement} is accepted when the protocol marks it
 as admissible, since the blind prompt does not expose the expected verdict
 field or Lean-side witness cue.
+Template accuracy is the primary metric. Verdict accuracy is secondary; when
+interpreting verdict results we distinguish the abstention-accepted score from
+a strict score that requires the predicted verdict to match the protocol
+verdict exactly.
 Caveat hit rate is a secondary keyword measure over the model's caveat,
 reason, and raw response fields. Confusion matrices are computed over the
 allowed labels (13 for Set~A; 19 for Set~B) plus \texttt{\_\_other\_\_} for invalid or blank
@@ -331,7 +378,8 @@ predictions.
 
 Table~\ref{tab:template} reports template accuracy, verdict accuracy, and
 caveat hit rate for both models under both conditions.
-The A2\,$-$\,A1 gaps show that exposing the Lean verdict / witness cue
+The A2\,$-$\,A1 gaps show that exposing the mechanism-bearing Lean verdict /
+witness cue
 improves mechanism selection across the board,
 while the magnitude and pattern of the gaps differ between models.
 
@@ -355,6 +403,31 @@ Llama~3.3~70B & A1 & $68.2\%$ & $95.5\%$ & $77.3\%$ & \multirow{2}{*}{$+13.6$~pp
 \end{tabular}
 \end{table}
 
+Table~\ref{tab:paired-transitions} reports the paired A1/A2 template
+transitions. These counts use the same prediction rows as
+Table~\ref{tab:template}, but pair each A1 prompt with its corresponding A2
+prompt for the same item, model, and run. This is important because the three
+runs use temperature~$=0$ and seed~$=0$; they are best interpreted as
+deterministic backend-stability repetitions rather than independent samples
+from a broad item distribution.
+
+\begin{table}[htbp]
+\centering
+\caption{Paired A1/A2 template transitions. ``W$\to$C'' means wrong in A1 and
+         correct in A2; ``C$\to$W'' means correct in A1 and wrong in A2.}
+\label{tab:paired-transitions}
+\begin{tabular}{lrrrrl}
+\toprule
+\textbf{Model} & \textbf{C$\to$C} & \textbf{W$\to$C}
+  & \textbf{W$\to$W} & \textbf{C$\to$W} & \textbf{Main improved families} \\
+\midrule
+gpt-oss-120b & 53 & 7 & 6 & 0 & \texttt{CRT} (7) \\
+Llama~3.3~70B & 42 & 12 & 9 & 3
+  & \texttt{CRT} (6); finite-unit (3); stable-arith. (3) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \paragraph{Routing ceiling under blind conditions.}
 Under A1, gpt-oss-120b reaches $80.3\%$ template accuracy and Llama~3.3~70B
 reaches $68.2\%$.
@@ -364,21 +437,32 @@ temperature~$= 0$ with seed~$= 0$ across three runs.
 The $n=3$ repetition produced stable predictions under this deterministic
 configuration, so the observed errors are not explained by ordinary sampling
 variance within this run setup.
+At the same time, the effective source of variation is item-level rather than
+run-level; Table~\ref{tab:paired-transitions} is therefore the more
+conservative view of how the cue changes routing behavior.
 
 \paragraph{Cue-induced routing uplift.}
-Exposing the Lean verdict / witness cue (A2) raises template
+Exposing the mechanism-bearing Lean verdict / witness cue (A2) raises template
 accuracy by $+10.6$~pp for gpt-oss-120b and $+13.6$~pp for Llama.
 The uplift is entirely attributable to the structural cues embedded in the
 Lean-side cue: the models route correctly once they can read the exposed
 proof-status and witness-family language, not because they infer it from the
 mathematical object alone.
+In paired terms, gpt-oss-120b has 7 wrong-to-correct transitions and no
+correct-to-wrong transitions; all 7 improvements are CRT rows. Llama has 12
+wrong-to-correct transitions, but also 3 correct-to-wrong transitions on an
+\texttt{operation{-}bridge} row, showing that the cue changes routing behavior
+rather than merely adding a monotone correctness bonus.
 
 \paragraph{Verdict--template dissociation.}
 The two models show a notable divergence in verdict accuracy.
-For gpt-oss-120b, verdict accuracy tracks template accuracy: $84.8\%$ in A1,
-rising to $95.5\%$ in A2 ($+10.6$~pp).
-For Llama~3.3~70B, verdict accuracy is $95.5\%$ in \emph{both} conditions,
-with a gap of $0.0$~pp.
+For gpt-oss-120b, the abstention-accepted verdict score tracks template
+accuracy: $84.8\%$ in A1, rising to $95.5\%$ in A2 ($+10.6$~pp). Its strict
+A1 verdict accuracy is lower ($31.8\%$), because it frequently returns
+\texttt{Unknown{-}from{-}statement} under the blind condition; this is counted
+as acceptable abstention by the protocol but not as strict verdict recovery.
+For Llama~3.3~70B, strict and abstention-accepted verdict accuracy are both
+$95.5\%$ in both conditions, with a gap of $0.0$~pp.
 Llama infers truth correctly from the mathematical object alone but fails to
 route the structural template without the cue.
 This dissociation confirms that truth inference and proof-mechanism
@@ -436,7 +520,7 @@ Llama~3.3~70B & A1 & \texttt{CRT}                      & \texttt{ring-equivalenc
 \end{tabular}
 \end{table}
 
-\subsection{Set~B: cross-corpus replication}
+\subsection{Set~B: cross-module extension}
 \label{sec:results:setb}
 
 Table~\ref{tab:setb} reports Set~B results over 6 POM/CollisionKernel items
@@ -462,9 +546,10 @@ Llama~3.3~70B & A1 & $50.0\%$ & $100.0\%$ & \multirow{2}{*}{$+27.8$~pp} & \multi
 \end{tabular}
 \end{table}
 
-\paragraph{Cross-corpus routing ceiling.}
-The CRT-granularity compression pattern observed in Set~A replicates in
-Set~B with a different label set.
+\paragraph{Cross-module routing check.}
+The CRT-granularity compression pattern observed in Set~A reappears in
+Set~B with a different label set. Because Set~B contains only 6 items, we
+interpret it as a small extension check rather than a full replication corpus.
 Llama's Set~B misroutes are
 \begin{center}
 \begin{tabular}{c}
@@ -477,9 +562,9 @@ Llama's Set~B misroutes are
 \end{tabular}
 \end{center}
 The \texttt{CRT{-}budget{-}bound}\,$\to$\,\texttt{CRT} error is cue-resistant:
-it persists in A2 regardless of witness-cue exposure, replicating the
-structure of the Set~A cue-resistant errors and confirming that
-CRT-granularity compression is not an artifact of the FiberRing label set.
+it persists in A2 regardless of witness-cue exposure, matching the structure
+of the Set~A cue-resistant errors and suggesting that CRT-granularity
+compression is not only an artifact of the FiberRing label set.
 
 \paragraph{Inverse dissociation.}
 Set~B reveals a cross-model dissociation in the opposite direction from
@@ -602,7 +687,7 @@ artifacts are named at different layers: instance construction, homomorphism
 preservation, equivalence construction, CRT decomposition, field-phase
 transport, finite arithmetic checks, and rigidity.
 
-\paragraph{Set~B cross-corpus confirmation.}
+\paragraph{Set~B cross-module confirmation.}
 The Set~B results provide a cross-corpus check on the main Set~A findings.
 The CRT-granularity compression pattern---routing to a coarser label within
 the same structural family---reappears in Set~B with entirely different
@@ -612,10 +697,10 @@ in the same way that
 is cue-resistant in Set~A.
 Both errors persist when the Lean verdict / witness cue is exposed, and both
 reflect a genuine granularity boundary rather than a missing cue.
-This replication across module boundaries (FiberRing vs.\ POM/CollisionKernel)
-supports the interpretation that CRT-granularity compression is a structural
-property of how these models encode mathematical hierarchies, not an artifact
-of any particular corpus design.
+This cross-module check (FiberRing vs.\ POM/CollisionKernel) supports the
+interpretation that CRT-granularity compression is a structural pattern worth
+testing beyond the FiberRing core, while leaving a larger independent corpus
+as future work.
 
 \section{Discussion}
 \label{sec:discussion}
@@ -657,13 +742,20 @@ derived from one equation.
 The evaluation covers two models under reasoning-suppressed conditions, and
 the headline numbers are point estimates over three deterministic runs rather
 than confidence intervals over a sampled distribution.
+Because the runs use temperature~$=0$ and seed~$=0$, the three repetitions
+should not be read as independent statistical samples; they are useful for
+checking backend stability, while the paired item-level transitions give the
+more conservative view of routing change.
 The cue-resistant findings rest on consistent but low per-cell counts.
 Here ``ceiling'' is used operationally: it names the observed blind-routing
 saturation in this fixed Set~A protocol, not a universal upper bound for the
 model family.
-Set~B provides an initial cross-corpus check over 6 POM/CollisionKernel
-items, confirming the CRT-granularity compression pattern and the
-verdict/template dissociation across module boundaries.
+The A2 condition is also mechanism-bearing: it is designed to test whether
+explicit Lean-side witness metadata improves routing, not whether a truth-only
+verdict cue would suffice.
+Set~B provides an initial cross-module check over 6 POM/CollisionKernel
+items, suggesting the CRT-granularity compression pattern and the
+verdict/template dissociation beyond the FiberRing core.
 The boundary-ambiguous items and a larger independent corpus remain as
 future work to establish whether the findings generalize more broadly.
 
@@ -672,14 +764,16 @@ future work to establish whether the findings generalize more broadly.
 
 We evaluated structural routing in two LLMs over 28 Lean-verified items
 (22 FiberRing Set~A items and 6 POM/CollisionKernel Set~B items) under
-blind (A1) and Lean-cue-conditioned (A2) routing.
+blind (A1) and mechanism-bearing Lean-cue-conditioned (A2) routing.
 On Set~A, blind template accuracy reaches a ceiling of $80.3\%$
 (gpt-oss-120b) and $68.2\%$ (Llama~3.3~70B); exposing the Lean verdict /
-witness cue lifts both by $10.6$ and $13.6$~pp respectively.
+witness cue lifts both by $10.6$ and $13.6$~pp respectively, with paired
+wrong-to-correct transitions concentrated in CRT and neighboring mechanism
+families.
 The dominant Set~A failure is a CRT\,$\to$\,ring-equivalence misroute that
 resolves completely under the Lean-side cue, while two label pairs misroute
 regardless of the cue.
-Set~B adds a cross-corpus check: CRT-granularity compression reappears with
+Set~B adds a cross-module check: CRT-granularity compression reappears with
 POM/CollisionKernel labels, and the verdict--template dissociation persists
 across models.
 
@@ -690,8 +784,9 @@ Because every item is anchored to a machine-checked Lean artifact and routed
 through an explicit certificate-family label map, the confusion matrix
 identifies where a proof-search agent would require explicit mechanism
 metadata.
-The full pipeline, prompt pack, and results are available in the project
-repository.
+The accompanying source-anchor manifest records these obligations at the
+level of source snapshots and Lean declarations, making the full pipeline,
+prompt pack, manifest, and results auditable in the project repository.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \bibliographystyle{plainnat}

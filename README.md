@@ -20,6 +20,7 @@ data/
   israel_setB_predictions_template_2026-05-28.jsonl
 tools/
   israel_setA_evaluate.py                # scorer for prediction JSONL
+  paper_hardening_analysis.py            # paired transitions and manifest summary diagnostics
   check_lean_source_manifest.py          # checks Lean source-anchor manifest against protocols
 scripts/
   eval_pipeline_together.py              # Together AI runner
@@ -124,6 +125,19 @@ The evaluator reports metrics separately by model and condition:
 - confusion matrices over the protocol labels, plus `__other__` for invalid or blank predictions
 - headline A2-A1 gaps for template accuracy, verdict accuracy, and caveat hit rate
 
+## Paper Diagnostics
+
+Generate the secondary diagnostics used by the manuscript:
+
+```bash
+python3 tools/paper_hardening_analysis.py
+```
+
+This writes CSV and Markdown reports under `results/paper_hardening/`,
+including paired A1/A2 template transitions, strict-versus-abstention verdict
+diagnostics, and a Lean source-anchor manifest summary. The script uses the
+existing prediction files and does not rerun model calls.
+
 ## Outputs
 
 Typical generated files:
@@ -136,6 +150,7 @@ Typical generated files:
 - `experiments/israel_setB_row_scores.csv`: Set B row-level scoring details
 - `results/fiberring_setA_results_2026-05-27.md`: human-readable Set A report
 - `results/fiberring_setB_results_2026-05-28.md`: human-readable Set B report
+- `results/paper_hardening/`: paired transition, verdict, and manifest diagnostics
 
 ## Lean-Side Review
 
