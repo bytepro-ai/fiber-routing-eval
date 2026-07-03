@@ -30,7 +30,8 @@ fiber-routing-eval/
 │
 ├── tools/                         # Evaluation and scoring utilities
 │   ├── israel_setA_evaluate.py    # Scorer: reads predictions + protocol, writes summary + CSV
-│   └── check_lean_source_manifest.py # Checks Lean source-anchor manifest against protocols
+│   ├── check_lean_source_manifest.py # Checks Lean source-anchor manifest against protocols
+│   └── paper_hardening_analysis.py # Reproducible diagnostics: paired A1/A2 template transitions, strict-vs-abstention verdict diagnostics, and Lean source-anchor manifest summary
 │
 ├── experiments/                   # Generated outputs from pipeline runs
 │   ├── israel_setA_predictions.jsonl  # Raw model outputs (264 rows for Set A)
@@ -44,7 +45,14 @@ fiber-routing-eval/
 │
 ├── results/                       # Human-readable results reports
 │   ├── fiberring_setA_results_2026-05-27.md  # Set A results report
-│   └── fiberring_setB_results_2026-05-28.md  # Set B results report
+│   ├── fiberring_setB_results_2026-05-28.md  # Set B results report
+│   └── paper_hardening/           # Generated CSV/Markdown diagnostics for the manuscript
+│       ├── set_a_paired_template_transitions.csv
+│       ├── set_b_paired_template_transitions.csv
+│       ├── set_a_strict_verdict_diagnostics.csv
+│       ├── set_b_strict_verdict_diagnostics.csv
+│       ├── lean_source_anchor_manifest_summary.csv
+│       └── paper_hardening_diagnostics.md
 │
 ├── docs/                          # Review and coordination notes
 │   ├── lean_side_framing_review.md # Automath/Omega Lean-side review checklist
@@ -55,9 +63,12 @@ fiber-routing-eval/
 │   ├── main.tex
 │   └── references.bib
 │
-├── FiberRing/                     # Python virtual environment (not tracked)
+├── .github/workflows/
+│   └── lean-source-manifest.yml   # CI: runs check_lean_source_manifest.py on PR/push to main
+├── .venv/                         # Python virtual environment (not tracked)
 ├── .env                           # API key (not tracked)
 ├── .env.example                   # Key template: TOGETHER_API_KEY=...
+├── LICENSE                          # Apache 2.0
 ├── requirements.txt               # Pinned pip dependencies
 └── README.md                      # Setup and usage documentation
 ```
@@ -66,10 +77,11 @@ fiber-routing-eval/
 
 ## Workflow
 
-### 1. Run the pipeline
+### 1. Set up environment and run the pipeline
 
 ```bash
-source FiberRing/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 python scripts/eval_pipeline_together.py \
   --prompt-pack data/israel_setA_A1_A2_prompt_pack.jsonl \
   --output experiments/israel_setA_predictions.jsonl \
@@ -103,6 +115,17 @@ For machine-readable Lean source anchors, see
 levels, and review invariants, see
 `docs/lean_source_anchor_manifest_spec.md`. Check the manifest with
 `python3 tools/check_lean_source_manifest.py`.
+
+### 4. Generate paper diagnostics
+
+```bash
+python3 tools/paper_hardening_analysis.py
+```
+
+Writes CSV and Markdown reports under `results/paper_hardening/`, including
+paired A1/A2 template transitions, strict-vs-abstention verdict diagnostics,
+and a Lean source-anchor manifest summary. Uses existing prediction files and
+does not rerun model calls.
 
 ---
 
